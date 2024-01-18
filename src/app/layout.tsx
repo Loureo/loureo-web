@@ -11,9 +11,9 @@ export const metadata: Metadata = {
   title: "Loureo - Estudio de desarrollo",
   description: "A la vanguardia en soluciones de desarrollo.",
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon/favicon.ico",
-    apple: "/favicon/apple-touch-icon.png",
+    icon: "https://www.loureo.com/favicon.ico",
+    shortcut: "https://www.loureo.com/favicon/favicon.ico",
+    apple: "https://www.loureo.com/favicon/apple-touch-icon.png",
   },
   openGraph: {
     type: "website",
