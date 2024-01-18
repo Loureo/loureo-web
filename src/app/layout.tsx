@@ -1,35 +1,40 @@
-"use client";
-
 import "./globals.css";
 
-import { Button, HStack, Text } from "@chakra-ui/react";
-import { Variants, motion } from "framer-motion";
-
-import { Link } from "@chakra-ui/next-js";
-import type { Metadata } from "next";
+import Navbar from "@/components/navbar";
+import { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Head from "next/head";
-import Image from "next/image";
-import loureoPrimary from "../../public/loureo-primary.svg";
 import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const metadata: Metadata = {
-  title: "Loureo Website",
-  description: "Loureo Website",
-};
-
-const navbar: Variants = {
-  hidden: {
-    y: -100,
-    opacity: 0,
-    transition: { duration: 0.8, ease: "easeInOut", delay: 1.0 },
+export const metadata: Metadata = {
+  title: "Loureo - Estudio de desarrollo",
+  description: "A la vanguardia en soluciones de desarrollo.",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon/favicon.ico",
+    apple: "/favicon/apple-touch-icon.png",
   },
-  show: {
-    y: 0,
-    opacity: 1,
-    transition: { duration: 0.8, ease: "easeInOut", delay: 1.0 },
+  openGraph: {
+    type: "website",
+    locale: "es_ES",
+    url: "https://www.loureo.com",
+    title: "Loureo - Estudio de desarrollo",
+    description: "A la vanguardia en soluciones de desarrollo.",
+    images: [
+      {
+        url: "https://www.loureo.com/og_image.png",
+        width: 1200,
+        height: 630,
+        alt: "Loureo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Loureo - Estudio de desarrollo",
+    description: "A la vanguardia en soluciones de desarrollo.",
+    images: ["https://www.loureo.com/og_image.png"], // Must be an absolute URL
   },
 };
 
@@ -40,106 +45,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <Head>
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/favicon/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/favicon/site.webmanifest" />
-        <script async src="https://player.vimeo.com/api/player.js"></script>
-
-        <title>Loureo - Estudio de desarrollo</title>
-        <meta
-          name="description"
-          content="Liderando la vanguardia en soluciones de desarrollo web."
-        />
-
-        <meta property="og:title" content="Loureo - Estudio de desarrollo" />
-        <meta
-          property="og:description"
-          content="Liderando la vanguardia en soluciones de desarrollo web."
-        />
-        <meta property="og:image" content="/og_image.png" />
-        <meta property="og:url" content="https://www.loureo.com" />
-        <meta property="og:type" content="website" />
-
-        <meta name="twitter:card" content="/og_image.png" />
-        <meta
-          name="twitter:title"
-          content="Loureo - Innovación en Desarrollo Web"
-        />
-        <meta
-          name="twitter:description"
-          content="Liderando la vanguardia en soluciones de desarrollo web."
-        />
-        <meta name="twitter:image" content="/og_image.png" />
-      </Head>
       <body className={inter.className}>
         <Providers>
-          {/* Navbar */}
-          <HStack
-            justifyContent={"space-between"}
-            p={{ base: 4, md: 8 }}
-            alignItems={"center"}
-            as={motion.div}
-            variants={navbar}
-            initial="hidden"
-            animate="show"
-          >
-            <HStack
-              justifyContent={"space-between"}
-              alignItems={"center"}
-              spacing={{ base: 3, md: 4 }}
-            >
-              <Image
-                priority
-                src={loureoPrimary}
-                alt="Loureo Logo"
-                width={30}
-              />
-
-              <Text
-                as="span"
-                fontSize={{ base: 26, md: 30 }}
-                flex={1}
-                fontFamily={"brand"}
-                textAlign={"center"}
-                fontWeight={"bold"}
-                pos={"relative"}
-                bottom={"-0.2em"}
-              >
-                Loureo
-              </Text>
-            </HStack>
-
-            <Button
-              size={"sm"}
-              colorScheme="brand"
-              border={"1px solid"}
-              borderColor={"brand.400"}
-              borderRadius={"20px"}
-              color={"black"}
-              w={"fit-content"}
-              justifySelf={"end"}
-              as={Link}
-              href={"mailto:hello@loureo.com"}
-            >
-              ¿Hablamos? →
-            </Button>
-          </HStack>
+          <Navbar />
 
           {children}
         </Providers>

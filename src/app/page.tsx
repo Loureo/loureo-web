@@ -31,7 +31,7 @@ const item: Variants = {
   show: { y: 0, opacity: 1, transition: { duration: 0.8 } },
 };
 
-export default function Home() {
+const Home = () => {
   return (
     <VStack
       spacing={{ base: 4, md: 8 }}
@@ -170,4 +170,6 @@ export default function Home() {
       </Stack>
     </VStack>
   );
-}
+};
+
+export default Home;
