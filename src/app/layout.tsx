@@ -59,6 +59,7 @@ export default function RootLayout({
           href="/favicon/favicon-16x16.png"
         />
         <link rel="manifest" href="/favicon/site.webmanifest" />
+        <script async src="https://player.vimeo.com/api/player.js"></script>
       </Head>
       <body className={inter.className}>
         <Providers>

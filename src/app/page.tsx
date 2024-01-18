@@ -44,29 +44,21 @@ export default function Home() {
       animate="show"
     >
       <Box w={"full"} h={"90%"} as={motion.div} variants={item}>
-        <Box
-          as="video"
-          poster="https://assets-global.website-files.com/62f22a75df043850e3e9e22c/636e7f6c49cf1238f936d2e7_preview_reel_desktop.webp"
-          width="100%"
-          muted
-          playsInline
-          loop
-          autoPlay
-          data-object-fit="cover"
-          objectFit={"cover"}
-          display={"block"}
-          lineHeight={0}
-          pos={"relative"}
-          top={0}
-          left={0}
-          w={"100%"}
-          h={"100%"}
-          borderRadius={"20px"}
-        >
-          <source
-            src="https://player.vimeo.com/progressive_redirect/playback/764891094/rendition/1080p/file.mp4?loc=external&amp;signature=514594fbee03548845bbad0d845efcfd514e89f0d63546fbb1a1a6e88ab42bb2"
-            type="video/mp4"
-          />
+        <Box borderRadius={"20px"} overflow={"hidden"}>
+          <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
+            <iframe
+              src="https://player.vimeo.com/video/904034674?autoplay=1&loop=1&autopause=0&background=1"
+              allow="autoplay; fullscreen; picture-in-picture"
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+              }}
+              title="loureo_home"
+            ></iframe>
+          </div>
         </Box>
       </Box>
 
@@ -105,15 +97,15 @@ export default function Home() {
               px={{ base: 4, md: 8 }}
             >
               <Heading as={"h2"} fontWeight={"medium"} fontSize={"xl"}>
-                Somos un equipo de especialistas enfocados en crear y gestionar
-                marcas, productos y experiencias digitales.
+                Somos un equipo enfocado en construir productos y experiencias
+                digitales que transformen los negocios.
               </Heading>
               <Text>
-                Entendemos las marcas como un activo clave de los negocios para
-                que cumplan sus objetivos y sus propósitos. Desde Soluble les
-                acompañamos a consolidarse y escalar de forma auténtica y
-                sostenible, maximizando la captación y fidelizando a clientes y
-                talento.
+                Entendemos la tecnología como un valor diferencial para
+                conseguir la excelencia en cada proceso y en cada interacción.
+                Con Loureo, ayuda a las empresas a transformar sus negocios a
+                través de soluciones digitales a medida que les permitan ser más
+                competitivos y eficientes.
               </Text>
             </VStack>
           </GridItem>
