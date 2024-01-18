@@ -44,21 +44,25 @@ export default function Home() {
       animate="show"
     >
       <Box w={"full"} h={"90%"} as={motion.div} variants={item}>
-        <Box borderRadius={"20px"} overflow={"hidden"}>
-          <div style={{ padding: "56.25% 0 0 0", position: "relative" }}>
-            <iframe
-              src="https://player.vimeo.com/video/904034674?autoplay=1&loop=1&autopause=0&background=1"
-              allow="autoplay; fullscreen; picture-in-picture"
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-              }}
-              title="loureo_home"
-            ></iframe>
-          </div>
+        <Box
+          as="video"
+          width="100%"
+          muted
+          playsInline
+          loop
+          autoPlay
+          data-object-fit="cover"
+          objectFit={"cover"}
+          display={"block"}
+          lineHeight={0}
+          pos={"relative"}
+          top={0}
+          left={0}
+          w={"100%"}
+          h={"100%"}
+          borderRadius={"20px"}
+        >
+          <source src="/loureo_home.mp4" type="video/mp4" />
         </Box>
       </Box>
 
