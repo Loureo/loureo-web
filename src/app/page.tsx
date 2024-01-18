@@ -107,9 +107,9 @@ const Home = () => {
               <Text>
                 Entendemos la tecnología como un valor diferencial para
                 conseguir la excelencia en cada proceso y en cada interacción.
-                Con Loureo, ayuda a las empresas a transformar sus negocios a
-                través de soluciones digitales a medida que les permitan ser más
-                competitivos y eficientes.
+                En Loureo, ayudamos a transformar los negocios de nuestros
+                clientes a través de soluciones digitales a medida que les
+                permitan ser más competitivos y eficientes.
               </Text>
             </VStack>
           </GridItem>
