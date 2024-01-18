@@ -60,6 +60,32 @@ export default function RootLayout({
         />
         <link rel="manifest" href="/favicon/site.webmanifest" />
         <script async src="https://player.vimeo.com/api/player.js"></script>
+
+        <title>Loureo - Estudio de desarrollo</title>
+        <meta
+          name="description"
+          content="Liderando la vanguardia en soluciones de desarrollo web."
+        />
+
+        <meta property="og:title" content="Loureo - Estudio de desarrollo" />
+        <meta
+          property="og:description"
+          content="Liderando la vanguardia en soluciones de desarrollo web."
+        />
+        <meta property="og:image" content="/og_image.png" />
+        <meta property="og:url" content="https://www.loureo.com" />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="/og_image.png" />
+        <meta
+          name="twitter:title"
+          content="Loureo - Innovación en Desarrollo Web"
+        />
+        <meta
+          name="twitter:description"
+          content="Liderando la vanguardia en soluciones de desarrollo web."
+        />
+        <meta name="twitter:image" content="/og_image.png" />
       </Head>
       <body className={inter.className}>
         <Providers>
