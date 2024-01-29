@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     description: "A la vanguardia en soluciones de desarrollo.",
     images: [
       {
-        url: "https://www.loureo.com/og_image.png",
+        url: "https://www.loureo.com/favicon/og_image.png",
         width: 1200,
         height: 630,
         alt: "Loureo",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Loureo - Estudio de desarrollo",
     description: "A la vanguardia en soluciones de desarrollo.",
-    images: ["https://www.loureo.com/og_image.png"], // Must be an absolute URL
+    images: ["https://www.loureo.com/favicon/og_image.png"], // Must be an absolute URL
   },
 };
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, HStack, Text } from "@chakra-ui/react";
+import { Button, HStack } from "@chakra-ui/react";
 import { Variants, motion } from "framer-motion";
 
 import { Link } from "@chakra-ui/next-js";
@@ -37,19 +37,6 @@ const Navbar = () => {
         spacing={{ base: 3, md: 4 }}
       >
         <Image priority src={loureoPrimary} alt="Loureo Logo" width={30} />
-
-        <Text
-          as="span"
-          fontSize={{ base: 26, md: 30 }}
-          flex={1}
-          fontFamily={"brand"}
-          textAlign={"center"}
-          fontWeight={"bold"}
-          pos={"relative"}
-          bottom={"-0.2em"}
-        >
-          Loureo
-        </Text>
       </HStack>
 
       <Button

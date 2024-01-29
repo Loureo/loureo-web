@@ -7,17 +7,17 @@ import Fonts from "./fonts";
 const theme = extendTheme({
   colors: {
     brand: {
-      50: "#FBFFE8",
-      100: "#F9FFDE",
-      200: "#F6FFC9",
-      300: "#F3FFB5",
-      400: "#EFFFA0",
-      500: "#ECFF8C",
-      600: "#E4FF5E",
-      700: "#DDFF30",
-      800: "#D5FF02",
-      900: "#B0D300",
-      950: "#9DBC00",
+      50: "#FFFFFF",
+      100: "#FFFFFF",
+      200: "#FFFFFF",
+      300: "#FFFFFF",
+      400: "#FFFFFF",
+      500: "#FFFFFF",
+      600: "#E3E3E3",
+      700: "#C7C7C7",
+      800: "#ABABAB",
+      900: "#8F8F8F",
+      950: "#818181",
     },
   },
   styles: {
