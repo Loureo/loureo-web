@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "Loureo - Estudio de desarrollo",
   description: "A la vanguardia en soluciones de desarrollo.",
   icons: {
-    icon: "https://www.loureo.com/favicon.ico",
+    icon: "https://www.loureo.com/favicon/favicon.ico",
     shortcut: "https://www.loureo.com/favicon/favicon.ico",
     apple: "https://www.loureo.com/favicon/apple-touch-icon.png",
   },
