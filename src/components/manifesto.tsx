@@ -5,7 +5,7 @@ const Manifesto = () => {
     {
       title: "Simplicity is the ultimate sophistication",
       description:
-        "Nuestro foco es que la tecnología sea fácil e intuitiva. Esto permite hacerla accesible a las personas e implementarse a cualquier nivel y tamaño de empresa. Nosotros nos despertamos cada mañana y trabajamos para que esto suceda y, así, poder tener productos limpios, usables y con la mínima fricción posible entre tecnología-persona..",
+        "Nuestro foco es que la tecnología sea fácil e intuitiva. Esto permite hacerla accesible a las personas e implementarse a cualquier nivel y tamaño de empresa. Nosotros nos despertamos cada mañana y trabajamos para que esto suceda y, así, poder tener productos limpios, usables y con la mínima fricción posible entre tecnología-persona.",
     },
     {
       title: "Mind, heart and guts",
