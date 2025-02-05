@@ -41,8 +41,9 @@ const Projects = () => {
         fontSize={"5xl"}
         fontWeight={"thin"}
         textTransform={"uppercase"}
-        mb={40}
+        mb={24}
         fontFamily={"monospace"}
+        lineHeight={"1.2"}
       >
         What we do
       </Heading>
@@ -56,105 +57,94 @@ const Projects = () => {
           <Stack
             key={`timeline-${index}`}
             gap={{ base: 10, lg: 14 }}
-            direction={{ base: "column", md: "row" }}
+            direction={{ base: "column", lg: "row" }}
             justifyContent={"start"}
             alignItems={"start"}
             w={"full"}
           >
-            <Stack
-              gap={12}
+            <Heading
+              fontSize={"2xl"}
+              textTransform={"uppercase"}
+              wordBreak={"keep-all"}
+              overflow={"hidden"}
+              textOverflow={"ellipsis"}
+              w={{ base: "100%", lg: "30%" }}
+            >
+              {project.title}
+            </Heading>
+
+            <VStack
+              gap={20}
               justifyContent={"start"}
               alignItems={"start"}
-              w={"full"}
+              w={{ base: "full", lg: "70%" }}
             >
-              <Heading
-                fontSize={"2xl"}
-                textTransform={"uppercase"}
-                wordBreak={"keep-all"}
-                overflow={"hidden"}
-                textOverflow={"ellipsis"}
-                w={{ base: "100%", md: "30%" }}
-              >
-                {project.title}
-              </Heading>
+              <Text fontSize={"lg"} color={"gray.200"}>
+                {project.description}
+              </Text>
 
               <VStack
-                gap={20}
+                gap={6}
                 justifyContent={"start"}
                 alignItems={"start"}
-                w={{ base: "full", lg: "70%" }}
+                w={"full"}
               >
-                <Text fontSize={"lg"} color={"gray.200"}>
-                  {project.description}
-                </Text>
+                <Heading fontSize={"xl"} textTransform={"uppercase"}>
+                  Services
+                </Heading>
 
-                <VStack
-                  gap={6}
-                  justifyContent={"start"}
-                  alignItems={"start"}
-                  w={"full"}
-                >
-                  <Heading fontSize={"xl"} textTransform={"uppercase"}>
-                    Services
-                  </Heading>
+                <List.Root as="ul" variant="plain" gap={4}>
+                  {project.services.map((service, index) => (
+                    <List.Item key={`service-${index}`}>
+                      <List.Indicator asChild color="green.500" mr={4}>
+                        <LuCircleCheck />
+                      </List.Indicator>
 
-                  <List.Root as="ul" variant="plain" gap={4}>
-                    {project.services.map((service, index) => (
-                      <List.Item key={`service-${index}`}>
-                        <List.Indicator asChild color="green.500" mr={4}>
-                          <LuCircleCheck />
-                        </List.Indicator>
-
-                        {service}
-                      </List.Item>
-                    ))}
-                  </List.Root>
-                </VStack>
-
-                <Box
-                  borderRadius={"xl"}
-                  overflow={"hidden"}
-                  position={"relative"}
-                  border={"1px solid"}
-                  borderColor={"blacky.200"}
-                  w={"full"}
-                >
-                  <video
-                    src={project.showCase}
-                    autoPlay
-                    muted
-                    loop
-                    controls={false}
-                  />
-
-                  {project.undisclosed && (
-                    <Center
-                      position={"absolute"}
-                      top={"50%"}
-                      left={"50%"}
-                      transform={"translate(-50%, -50%)"}
-                      w={"110%"}
-                      h={"110%"}
-                      bgColor={"blackAlpha.800"}
-                      backdropFilter={"blur(10px)"}
-                      zIndex={10}
-                      flexDir={"column"}
-                      gap={4}
-                    >
-                      <Icon
-                        as={PiEyeSlashBold}
-                        boxSize={30}
-                        color={"gray.500"}
-                      />
-
-                      <Text fontSize={"lg"} color={"gray.500"}>
-                        Undisclosed
-                      </Text>
-                    </Center>
-                  )}
-                </Box>
+                      {service}
+                    </List.Item>
+                  ))}
+                </List.Root>
               </VStack>
-            </Stack>
+
+              <Box
+                borderRadius={"xl"}
+                overflow={"hidden"}
+                position={"relative"}
+                border={"1px solid"}
+                borderColor={"blacky.200"}
+                w={"full"}
+              >
+                <video
+                  src={project.showCase}
+                  autoPlay
+                  muted
+                  loop
+                  controls={false}
+                />
+
+                {project.undisclosed && (
+                  <Center
+                    position={"absolute"}
+                    top={"50%"}
+                    left={"50%"}
+                    transform={"translate(-50%, -50%)"}
+                    w={"110%"}
+                    h={"110%"}
+                    bgColor={"blackAlpha.800"}
+                    backdropFilter={"blur(10px)"}
+                    zIndex={10}
+                    flexDir={"column"}
+                    gap={4}
+                  >
+                    <Icon as={PiEyeSlashBold} boxSize={30} color={"gray.500"} />
+
+                    <Text fontSize={"lg"} color={"gray.500"}>
+                      Undisclosed
+                    </Text>
+                  </Center>
+                )}
+              </Box>
+            </VStack>
           </Stack>
         ))}
       </VStack>

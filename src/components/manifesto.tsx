@@ -50,8 +50,9 @@ const Manifesto = () => {
         fontSize={"5xl"}
         fontWeight={"thin"}
         textTransform={"uppercase"}
-        mb={40}
+        mb={24}
         fontFamily={"monospace"}
+        lineHeight={"1.2"}
       >
         We are based on
       </Heading>
