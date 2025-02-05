@@ -20,8 +20,7 @@ const Projects = () => {
       description:
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus voluptatum provident facere eius, numquam, sapiente corrupti unde illo sequi dolorum fuga porro minus ab, in magnam quaerat delectus explicabo quod. Sit repellat, voluptatem sequi distinctio qui molestias similique laboriosam quia ipsum? Hic porro molestiae ab rerum dignissimos earum facere doloremque.",
       services: ["UI/UX", "Webapp development", "Consultancy"],
-      showCase:
-        "https://framerusercontent.com/assets/j0KLA1BQnz9tlGmvLtEDqBfrQQ.mp4",
+      showCase: "/project_1.mp4",
       undisclosed: true,
     },
     {
@@ -29,8 +28,7 @@ const Projects = () => {
       description:
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus voluptatum provident facere eius, numquam, sapiente corrupti unde illo sequi dolorum fuga porro minus ab, in magnam quaerat delectus explicabo quod. Sit repellat, voluptatem sequi distinctio qui molestias similique laboriosam quia ipsum? Hic porro molestiae ab rerum dignissimos earum facere doloremque.",
       services: ["AI model training", "Automations"],
-      showCase:
-        "https://framerusercontent.com/assets/3gtgM2DuzEhm28Bk8sEwySDeUrg.mp4",
+      showCase: "/project_2.mp4",
       undisclosed: true,
     },
   ];
@@ -113,6 +111,7 @@ const Projects = () => {
                 border={"1px solid"}
                 borderColor={"blacky.200"}
                 w={"full"}
+                aspectRatio={"16/9"}
               >
                 <video
                   src={project.showCase}
