@@ -1,0 +1,165 @@
+import {
+  Box,
+  Center,
+  Heading,
+  Icon,
+  List,
+  Stack,
+  StackSeparator,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
+
+import { LuCircleCheck } from "react-icons/lu";
+import { PiEyeSlashBold } from "react-icons/pi";
+
+const Projects = () => {
+  const projects = [
+    {
+      title: "Project 1",
+      description:
+        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus voluptatum provident facere eius, numquam, sapiente corrupti unde illo sequi dolorum fuga porro minus ab, in magnam quaerat delectus explicabo quod. Sit repellat, voluptatem sequi distinctio qui molestias similique laboriosam quia ipsum? Hic porro molestiae ab rerum dignissimos earum facere doloremque.",
+      services: ["UI/UX", "Webapp development", "Consultancy"],
+      showCase:
+        "https://framerusercontent.com/assets/j0KLA1BQnz9tlGmvLtEDqBfrQQ.mp4",
+      undisclosed: true,
+    },
+    {
+      title: "Project 2",
+      description:
+        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus voluptatum provident facere eius, numquam, sapiente corrupti unde illo sequi dolorum fuga porro minus ab, in magnam quaerat delectus explicabo quod. Sit repellat, voluptatem sequi distinctio qui molestias similique laboriosam quia ipsum? Hic porro molestiae ab rerum dignissimos earum facere doloremque.",
+      services: ["AI model training", "Automations"],
+      showCase:
+        "https://framerusercontent.com/assets/3gtgM2DuzEhm28Bk8sEwySDeUrg.mp4",
+      undisclosed: true,
+    },
+  ];
+
+  return (
+    <VStack gap={30} py={24} px={4} maxW={"7xl"} mx={"auto"}>
+      <Heading
+        fontSize={"5xl"}
+        fontWeight={"thin"}
+        textTransform={"uppercase"}
+        mb={40}
+        fontFamily={"monospace"}
+      >
+        What we do
+      </Heading>
+
+      <VStack
+        gap={{ base: 20, lg: 24 }}
+        w={"full"}
+        separator={<StackSeparator />}
+      >
+        {projects.map((project, index) => (
+          <Stack
+            key={`timeline-${index}`}
+            gap={{ base: 10, lg: 14 }}
+            direction={{ base: "column", md: "row" }}
+            justifyContent={"start"}
+            alignItems={"start"}
+            w={"full"}
+          >
+            <Stack
+              gap={12}
+              justifyContent={"start"}
+              alignItems={"start"}
+              w={"full"}
+            >
+              <Heading
+                fontSize={"2xl"}
+                textTransform={"uppercase"}
+                wordBreak={"keep-all"}
+                overflow={"hidden"}
+                textOverflow={"ellipsis"}
+                w={{ base: "100%", md: "30%" }}
+              >
+                {project.title}
+              </Heading>
+
+              <VStack
+                gap={20}
+                justifyContent={"start"}
+                alignItems={"start"}
+                w={{ base: "full", lg: "70%" }}
+              >
+                <Text fontSize={"lg"} color={"gray.200"}>
+                  {project.description}
+                </Text>
+
+                <VStack
+                  gap={6}
+                  justifyContent={"start"}
+                  alignItems={"start"}
+                  w={"full"}
+                >
+                  <Heading fontSize={"xl"} textTransform={"uppercase"}>
+                    Services
+                  </Heading>
+
+                  <List.Root as="ul" variant="plain" gap={4}>
+                    {project.services.map((service, index) => (
+                      <List.Item key={`service-${index}`}>
+                        <List.Indicator asChild color="green.500" mr={4}>
+                          <LuCircleCheck />
+                        </List.Indicator>
+
+                        {service}
+                      </List.Item>
+                    ))}
+                  </List.Root>
+                </VStack>
+
+                <Box
+                  borderRadius={"xl"}
+                  overflow={"hidden"}
+                  position={"relative"}
+                  border={"1px solid"}
+                  borderColor={"blacky.200"}
+                  w={"full"}
+                >
+                  <video
+                    src={project.showCase}
+                    autoPlay
+                    muted
+                    loop
+                    controls={false}
+                  />
+
+                  {project.undisclosed && (
+                    <Center
+                      position={"absolute"}
+                      top={"50%"}
+                      left={"50%"}
+                      transform={"translate(-50%, -50%)"}
+                      w={"110%"}
+                      h={"110%"}
+                      bgColor={"blackAlpha.800"}
+                      backdropFilter={"blur(10px)"}
+                      zIndex={10}
+                      flexDir={"column"}
+                      gap={4}
+                    >
+                      <Icon
+                        as={PiEyeSlashBold}
+                        boxSize={30}
+                        color={"gray.500"}
+                      />
+
+                      <Text fontSize={"lg"} color={"gray.500"}>
+                        Undisclosed
+                      </Text>
+                    </Center>
+                  )}
+                </Box>
+              </VStack>
+            </Stack>
+          </Stack>
+        ))}
+      </VStack>
+    </VStack>
+  );
+};
+
+export default Projects;

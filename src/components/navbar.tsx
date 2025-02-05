@@ -1,59 +1,36 @@
 "use client";
 
-import { Button, HStack } from "@chakra-ui/react";
-import { Variants, motion } from "framer-motion";
-
-import { Link } from "@chakra-ui/next-js";
-import Image from "next/image";
-import loureoPrimary from "../../public/loureo-primary.svg";
-
-const navbar: Variants = {
-  hidden: {
-    y: -100,
-    opacity: 0,
-    transition: { duration: 0.8, ease: "easeInOut", delay: 1.0 },
-  },
-  show: {
-    y: 0,
-    opacity: 1,
-    transition: { duration: 0.8, ease: "easeInOut", delay: 1.0 },
-  },
-};
+import { Box, Button, Center, HStack, Image } from "@chakra-ui/react";
 
 const Navbar = () => {
   return (
-    <HStack
-      justifyContent={"space-between"}
-      p={{ base: 4, md: 8 }}
-      alignItems={"center"}
-      as={motion.div}
-      variants={navbar}
-      initial="hidden"
-      animate="show"
+    <Box
+      pos={"fixed"}
+      top={10}
+      left={0}
+      right={0}
+      zIndex={1000}
+      w={"fit-content"}
+      p={2}
+      m={"0 auto"}
+      bgColor={"whiteAlpha.500/80"}
+      borderRadius={"full"}
+      backdropFilter={"blur(4px)"}
+      shadow={"subtle"}
     >
-      <HStack
-        justifyContent={"space-between"}
-        alignItems={"center"}
-        spacing={{ base: 3, md: 4 }}
-      >
-        <Image priority src={loureoPrimary} alt="Loureo Logo" width={30} />
-      </HStack>
+      <Center>
+        <HStack gap={8} justifyContent={"space-between"} w={"full"}>
+          <Image
+            src={"./loureo-primary.svg"}
+            alt="Loureo Logo"
+            height={30}
+            ml={2}
+          />
 
-      <Button
-        size={"sm"}
-        colorScheme="brand"
-        border={"1px solid"}
-        borderColor={"brand.400"}
-        borderRadius={"20px"}
-        color={"black"}
-        w={"fit-content"}
-        justifySelf={"end"}
-        as={Link}
-        href={"mailto:hello@loureo.com"}
-      >
-        ¿Hablamos? →
-      </Button>
-    </HStack>
+          <Button colorPalette={"blacky"}>Contact →</Button>
+        </HStack>
+      </Center>
+    </Box>
   );
 };
 

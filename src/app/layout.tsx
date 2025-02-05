@@ -1,13 +1,13 @@
-import "./globals.css";
-
 import Navbar from "@/components/navbar";
+import { Provider } from "@/components/ui/provider";
+import { Toaster } from "@/components/ui/toaster";
 import { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { Providers } from "./providers";
+import { Space_Grotesk } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.loureo.com"),
   title: "Loureo - Estudio de desarrollo",
   description: "A la vanguardia en soluciones de desarrollo.",
   icons: {
@@ -44,13 +44,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
-      <body className={inter.className}>
-        <Providers>
+    <html suppressHydrationWarning>
+      <body className={spaceGrotesk.className}>
+        <Provider>
           <Navbar />
 
           {children}
-        </Providers>
+
+          <Toaster />
+        </Provider>
       </body>
     </html>
   );
