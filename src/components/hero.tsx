@@ -11,7 +11,11 @@ import {
 import MovingGradientBackground from "@/components/moving-gradient-background";
 import { toaster } from "@/components/ui/toaster";
 
-const Hero = () => {
+const Hero = ({
+  scrollToRef,
+}: {
+  scrollToRef: React.RefObject<HTMLDivElement>;
+}) => {
   return (
     <VStack
       pos={"relative"}
@@ -100,7 +104,14 @@ const Hero = () => {
             rates. Launch in weeks, not months.
           </Text>
 
-          <Button size={"lg"} colorPalette={"brand"} variant={"subtle"}>
+          <Button
+            size={"lg"}
+            colorPalette={"brand"}
+            variant={"subtle"}
+            onClick={() => {
+              scrollToRef.current?.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
             Go to services
           </Button>
         </VStack>

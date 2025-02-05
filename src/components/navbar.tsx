@@ -2,6 +2,8 @@
 
 import { Box, Button, Center, HStack, Image } from "@chakra-ui/react";
 
+import { toaster } from "./ui/toaster";
+
 const Navbar = () => {
   return (
     <Box
@@ -27,7 +29,19 @@ const Navbar = () => {
             ml={2}
           />
 
-          <Button colorPalette={"blacky"}>Contact →</Button>
+          <Button
+            colorPalette={"blacky"}
+            onClick={() => {
+              navigator.clipboard.writeText("hello@loureo.com");
+
+              toaster.create({
+                title: `Email copied to clipboard`,
+                type: "info",
+              });
+            }}
+          >
+            Contact →
+          </Button>
         </HStack>
       </Center>
     </Box>

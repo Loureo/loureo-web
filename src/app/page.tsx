@@ -1,6 +1,6 @@
 "use client";
 
-import { Spacer } from "@chakra-ui/react";
+import { Box, Spacer } from "@chakra-ui/react";
 
 import About from "@/components/about";
 import FAQs from "@/components/faqs";
@@ -8,17 +8,22 @@ import Footer from "@/components/footer";
 import Hero from "@/components/hero";
 import Manifesto from "@/components/manifesto";
 import Projects from "@/components/projects";
+import { useRef } from "react";
 
 const Home = () => {
+  const scrollToRef = useRef<HTMLDivElement>(null);
+
   return (
     <>
       {/* // Hero */}
-      <Hero />
+      <Hero scrollToRef={scrollToRef} />
 
       <Spacer h={12} />
 
       {/* // About */}
-      <About />
+      <Box ref={scrollToRef}>
+        <About />
+      </Box>
 
       {/* Manifesto */}
       <Manifesto />
