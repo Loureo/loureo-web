@@ -76,6 +76,7 @@ const FAQs = () => {
             value={`item-${index}`}
             bgColor={"blacky.700"}
             borderRadius={"xl"}
+            border={"none"}
             gap={2}
             mb={2}
           >

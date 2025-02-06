@@ -7,7 +7,14 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
+import { useMemo } from "react";
+
 const Footer = () => {
+  const isMobile = useMemo(
+    () => window.matchMedia("(max-width: 600px)").matches,
+    []
+  );
+
   return (
     <Box
       w={"full"}
@@ -20,13 +27,13 @@ const Footer = () => {
       overflow={"hidden"}
     >
       <Heading
-        fontSize={"8xl"}
-        color={"blacky.600"}
-        lineHeight={"1.2"}
+        fontSize={"150px"}
+        color={"blackAlpha.300"}
+        lineHeight={"1"}
         textAlign={"center"}
         w={"fit-content"}
         position={"absolute"}
-        bottom={5}
+        bottom={-8}
         left={"50%"}
         transform={"translateX(-50%)"}
         zIndex={-1}
@@ -35,7 +42,13 @@ const Footer = () => {
         overflow={"hidden"}
         textOverflow={"ellipsis"}
       >
-        WHAT HUMANS NEED: SIMPLE & NICE TECH
+        WHAT HUMANS NEED: <br /> SIMPLE & NICE TECH
+        {/* {isMobile ? (
+          <span>
+          </span>
+        ) : (
+          "WHAT HUMANS NEED: SIMPLE & NICE TECH"
+        )} */}
       </Heading>
 
       <SimpleGrid
