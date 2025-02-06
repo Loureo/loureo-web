@@ -2,11 +2,17 @@
 
 import { Box, Button, Center, HStack, Image } from "@chakra-ui/react";
 
+import { motion } from "framer-motion";
 import { toaster } from "./ui/toaster";
+
+const MotionBox = motion(Box);
 
 const Navbar = () => {
   return (
-    <Box
+    <MotionBox
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ ease: "easeOut", duration: 0.6 }}
       pos={"fixed"}
       top={10}
       left={0}
@@ -44,7 +50,7 @@ const Navbar = () => {
           </Button>
         </HStack>
       </Center>
-    </Box>
+    </MotionBox>
   );
 };
 

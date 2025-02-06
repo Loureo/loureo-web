@@ -5,6 +5,13 @@ import {
   AccordionRoot,
 } from "@/components/ui/accordion";
 import { Heading, Stack, Text } from "@chakra-ui/react";
+import { motion, useInView } from "framer-motion";
+
+import { useRef } from "react";
+
+const MotionStack = motion(Stack);
+const MotionHeading = motion(Heading);
+const MotionAccordionItem = motion(AccordionItem);
 
 const faqData = [
   {
@@ -42,8 +49,15 @@ const faqData = [
 ];
 
 const FAQs = () => {
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+
   return (
-    <Stack
+    <MotionStack
+      ref={containerRef}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.6 }}
       direction={{ base: "column", lg: "row" }}
       gap={{ base: 10, lg: 14 }}
       py={24}
@@ -51,7 +65,10 @@ const FAQs = () => {
       maxW={"7xl"}
       mx={"auto"}
     >
-      <Heading
+      <MotionHeading
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
         as="h2"
         fontSize="4xl"
         fontWeight={400}
@@ -64,12 +81,18 @@ const FAQs = () => {
         <Text as="span" color={"brand.200"}>
           todas tus preguntas.
         </Text>
-      </Heading>
+      </MotionHeading>
 
       <AccordionRoot multiple w={{ base: "100%", lg: "70%" }}>
         {faqData.map((faq, index) => (
-          <AccordionItem
+          <MotionAccordionItem
             key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{
+              duration: 0.5,
+              delay: 0.5 + index * 0.1, // Stagger each FAQ item
+            }}
             value={`item-${index}`}
             bgColor={"blacky.700"}
             borderRadius={"xl"}
@@ -88,10 +111,10 @@ const FAQs = () => {
             <AccordionItemContent p={6} pt={0}>
               <Text color="gray.300">{faq.answer}</Text>
             </AccordionItemContent>
-          </AccordionItem>
+          </MotionAccordionItem>
         ))}
       </AccordionRoot>
-    </Stack>
+    </MotionStack>
   );
 };
 

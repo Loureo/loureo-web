@@ -10,6 +10,13 @@ import {
 
 import MovingGradientBackground from "@/components/moving-gradient-background";
 import { toaster } from "@/components/ui/toaster";
+import { motion } from "framer-motion";
+
+const MotionCenter = motion(Center);
+const MotionStack = motion(Stack);
+const MotionHeading = motion(Heading);
+const MotionText = motion(Text);
+const MotionButton = motion(Button);
 
 const Hero = ({
   scrollToRef,
@@ -27,7 +34,10 @@ const Hero = ({
     >
       <MovingGradientBackground />
 
-      <Center
+      <MotionCenter
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ ease: "easeOut", duration: 0.6 }}
         flexDirection={"column"}
         textAlign={"center"}
         bgColor={"whiteAlpha.100"}
@@ -42,7 +52,10 @@ const Hero = ({
       >
         <VStack gap={{ base: 8, md: 12 }} maxW={"4xl"}>
           {/* Hiring banner */}
-          <Stack
+          <MotionStack
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ease: "easeOut", duration: 0.6, delay: 0.2 }}
             cursor={"pointer"}
             gap={3}
             direction={{ base: "row", md: "row" }}
@@ -54,7 +67,6 @@ const Hero = ({
             rounded={{ base: "md", md: "full" }}
             shadow={"subtle"}
             _hover={{ bgColor: "whiteAlpha.300", shadow: "xs" }}
-            transition={"all 0.2s ease-in-out"}
             onClick={() => {
               // Copy to clipboard the email address
               navigator.clipboard.writeText("hello@loureo.com");
@@ -84,18 +96,24 @@ const Hero = ({
             <Text fontSize={{ base: "xs", md: "sm" }} pr={3}>
               Product developers & designers!
             </Text>
-          </Stack>
+          </MotionStack>
 
-          <Heading
+          <MotionHeading
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ease: "easeOut", duration: 0.6, delay: 0.4 }}
             fontSize={{ base: "3xl", md: "7xl" }}
             fontWeight={400}
             lineHeight={1.05}
             letterSpacing={"tight"}
           >
             Customized and people-focused digital products
-          </Heading>
+          </MotionHeading>
 
-          <Text
+          <MotionText
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ease: "easeOut", duration: 0.6, delay: 0.6 }}
             fontSize={{ base: "md", md: "lg" }}
             fontWeight={300}
             lineHeight={1.2}
@@ -103,9 +121,12 @@ const Hero = ({
             Fusionamos IA, diseño y estrategia para que tus proyectos alcancen
             todo su potencial. Sin fricciones, sin complicaciones… solo
             resultados reales que impulsan tu crecimiento.
-          </Text>
+          </MotionText>
 
-          <Button
+          <MotionButton
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ease: "easeOut", duration: 0.6, delay: 0.8 }}
             size={"lg"}
             colorPalette={"brand"}
             variant={"subtle"}
@@ -114,9 +135,9 @@ const Hero = ({
             }}
           >
             Ver más
-          </Button>
+          </MotionButton>
         </VStack>
-      </Center>
+      </MotionCenter>
     </VStack>
   );
 };

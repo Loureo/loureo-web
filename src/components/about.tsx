@@ -9,23 +9,54 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
+import { motion, useInView } from "framer-motion";
+
+import { useRef } from "react";
+
+const MotionVStack = motion(VStack);
+const MotionHeading = motion(Heading);
+const MotionText = motion(Text);
+const MotionSimpleGrid = motion(SimpleGrid);
 
 const About = () => {
+  const titleRef = useRef(null);
+  const subtitleRef = useRef(null);
+  const cardsRef = useRef(null);
+
+  const isTitleInView = useInView(titleRef, { once: true, margin: "-200px" });
+  const isSubtitleInView = useInView(subtitleRef, {
+    once: true,
+    margin: "-200px",
+  });
+  const isCardsInView = useInView(cardsRef, { once: true, margin: "-1250px" });
+
   return (
     <Box py={24} px={4}>
       <VStack gap={16} maxW={"7xl"} mx={"auto"}>
         {/* Main heading */}
         <VStack gap={12} textAlign={"center"}>
-          <Heading
+          <MotionHeading
+            ref={titleRef}
+            initial={{ opacity: 0, y: 20 }}
+            animate={
+              isTitleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+            }
+            transition={{ duration: 0.6 }}
             fontSize={{ base: "4xl", md: "6xl" }}
             fontWeight={400}
             letterSpacing={"tight"}
             lineHeight={"1.2"}
           >
             Innovar es sencillo cuando se trabaja con pasión y experiencia
-          </Heading>
+          </MotionHeading>
 
-          <Text
+          <MotionText
+            ref={subtitleRef}
+            initial={{ opacity: 0, y: 20 }}
+            animate={
+              isSubtitleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+            }
+            transition={{ duration: 0.6 }}
             fontSize={{ base: "lg", md: "xl" }}
             color={"gray.600"}
             maxW={"3xl"}
@@ -35,11 +66,19 @@ const About = () => {
             cercano y humano. Nuestro equipo traduce la complejidad en
             soluciones claras y efectivas, pensadas para que, sin importar tu
             nivel técnico, puedas sentir el poder de la innovación.
-          </Text>
+          </MotionText>
         </VStack>
 
         {/* Features grid */}
-        <SimpleGrid columns={{ base: 1, md: 6 }} gap={8} w={"full"}>
+        <MotionSimpleGrid
+          ref={cardsRef}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isCardsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6 }}
+          columns={{ base: 1, md: 6 }}
+          gap={8}
+          w={"full"}
+        >
           <For
             each={[
               {
@@ -148,8 +187,13 @@ const About = () => {
             ]}
           >
             {(item, index) => (
-              <VStack
+              <MotionVStack
                 key={`feature-${index}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={
+                  isCardsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+                }
+                transition={{ duration: 0.6, delay: index * 0.2 }}
                 flex={1}
                 bg={"whiteAlpha.50"}
                 rounded={"2xl"}
@@ -173,10 +217,10 @@ const About = () => {
                 <Flex w={"full"} h={"full"} zIndex={0}>
                   {item.illustration}
                 </Flex>
-              </VStack>
+              </MotionVStack>
             )}
           </For>
-        </SimpleGrid>
+        </MotionSimpleGrid>
       </VStack>
     </Box>
   );
