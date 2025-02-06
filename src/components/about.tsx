@@ -114,13 +114,15 @@ const About = () => {
                   </>
                 ),
                 illustration: (
-                  <Image
-                    src="./integrate.png"
-                    alt="Changes timeline"
-                    transform={"scale(2)"}
-                    opacity={0.2}
-                    maxH={"200px"}
-                  />
+                  <Center w={"full"}>
+                    <Image
+                      src="./integrate.png"
+                      alt="Changes timeline"
+                      transform={"scale(2)"}
+                      opacity={0.2}
+                      maxH={"200px"}
+                    />
+                  </Center>
                 ),
                 colSpan: 2,
               },
