@@ -2,7 +2,7 @@ import { Button, Heading, Text, VStack } from "@chakra-ui/react";
 
 const CTA = () => {
   return (
-    <VStack gap={16} maxW={"4xl"} mx={"auto"} my={24}>
+    <VStack gap={16} maxW={"4xl"} mx={"auto"} px={4} my={24}>
       <VStack gap={12} textAlign={"center"}>
         <Heading
           fontSize={{ base: "4xl", md: "6xl" }}
