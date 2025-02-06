@@ -3,11 +3,11 @@
 import { Box, Spacer } from "@chakra-ui/react";
 
 import About from "@/components/about";
+import CTA from "@/components/cta";
 import FAQs from "@/components/faqs";
 import Footer from "@/components/footer";
 import Hero from "@/components/hero";
 import Manifesto from "@/components/manifesto";
-import Projects from "@/components/projects";
 import { useRef } from "react";
 
 const Home = () => {
@@ -29,13 +29,13 @@ const Home = () => {
       <Manifesto />
 
       {/* Projects */}
-      <Projects />
+      {/* <Projects /> */}
 
       {/* FAQs */}
       <FAQs />
 
-      {/* Contact */}
-      {/* <Heading>Contact</Heading> */}
+      {/* CTA */}
+      <CTA />
 
       {/* Footer */}
       <Footer />

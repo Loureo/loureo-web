@@ -9,6 +9,14 @@ const buttonRecipe = defineRecipe({
   base: { borderRadius: "full", fontWeight: "semibold" },
 });
 
+const inputRecipe = defineRecipe({
+  base: { borderRadius: "xl", fontWeight: "semibold" },
+});
+
+const textareaRecipe = defineRecipe({
+  base: { borderRadius: "xl", fontWeight: "semibold" },
+});
+
 const customConfig = defineConfig({
   globalCss: {
     html: { colorPalette: "brand" },
@@ -97,6 +105,8 @@ const customConfig = defineConfig({
 
     recipes: {
       button: buttonRecipe,
+      input: inputRecipe,
+      textarea: textareaRecipe,
     },
 
     semanticTokens: {
@@ -106,7 +116,7 @@ const customConfig = defineConfig({
           contrast: { value: "{colors.brand.100}" },
           fg: { value: "{colors.brand.500}" },
           muted: { value: "{colors.brand.100}" },
-          subtle: { value: "{colors.brand.200}" },
+          subtle: { value: "{colors.brand.50}" },
           emphasized: { value: "{colors.brand.300}" },
           focusRing: { value: "{colors.brand.500}" },
         },

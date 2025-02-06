@@ -8,40 +8,36 @@ import { Heading, Stack, Text } from "@chakra-ui/react";
 
 const faqData = [
   {
-    question: "What is Aconia's web design subscription service?",
+    question: "¿Trabajáis con empresas de cualquier sector o tamaño?",
     answer:
-      "Our subscription service provides ongoing professional web design and development support for a fixed monthly fee...",
-  },
-  {
-    question: "How does the Aconia subscription work?",
-    answer:
-      "You'll have access to our team of designers and developers who will handle your web design needs on an ongoing basis...",
-  },
-  {
-    question: "What types of design projects can aconia handle?",
-    answer:
-      "We handle a wide range of design projects including website updates, landing pages, graphic design, and more...",
+      "Totalmente. Nos adaptamos a la realidad de cada cliente, desde emprendedores y pymes hasta grandes corporaciones.",
   },
   {
     question:
-      "Is there a limit to how many update requests I can submit each month?",
+      "¿Es necesario tener conocimientos técnicos para contratar vuestros servicios?",
     answer:
-      "We process requests one at a time to ensure quality, but there's no strict limit on the number of requests...",
+      "No. Nuestro papel es traducir lo complejo en términos sencillos. Te acompañaremos en cada paso para que tomes decisiones informadas.",
   },
   {
-    question: "How quickly can I expect my site to be published?",
+    question: "¿Cuánto suele durar un proyecto con Loureo?",
     answer:
-      "Typical turnaround time for updates is 1-2 business days, depending on the complexity of the request...",
+      "Varía según la complejidad y el alcance. Sin embargo, trabajamos por hitos para que veas resultados y avances concretos en cada fase.",
   },
   {
-    question: "Can I cancel my subscription at any time?",
+    question: "¿Cómo integráis la IA en mis procesos de negocio?",
     answer:
-      "Yes, you can cancel your subscription at any time without any long-term commitments...",
+      "Estudiamos tus datos, analizamos tus objetivos y elegimos la mejor estrategia de IA. Puede ser machine learning, análisis predictivo u otras técnicas, siempre alineadas con tus metas.",
   },
   {
-    question: "What makes Aconia different from hiring a freelance designer?",
+    question: "¿Puedo contar con soporte después de la entrega del proyecto?",
     answer:
-      "Aconia offers reliable, consistent service with a full team of professionals, predictable pricing, and ongoing support...",
+      "Sí. Ofrecemos acompañamiento continuo, mantenimiento y evoluciones para que tu solución siga creciendo al ritmo de tu negocio.",
+  },
+  {
+    question:
+      "¿Qué garantías ofrecéis sobre la calidad y la eficacia de las soluciones?",
+    answer:
+      "Trabajamos de forma iterativa, validando en cada etapa. Esto nos permite garantizar que la solución final cumpla con tus objetivos y escale cuando lo necesites.",
   },
 ];
 
@@ -49,7 +45,7 @@ const FAQs = () => {
   return (
     <Stack
       direction={{ base: "column", lg: "row" }}
-      gap={30}
+      gap={{ base: 10, lg: 14 }}
       py={24}
       px={4}
       maxW={"7xl"}
@@ -62,14 +58,15 @@ const FAQs = () => {
         color="gray.600"
         mb={2}
         lineHeight={"1.2"}
+        w={{ base: "100%", lg: "30%" }}
       >
-        Get the answers to{" "}
+        Encuentra las respuestas a{" "}
         <Text as="span" color={"brand.200"}>
-          all your questions.
+          todas tus preguntas.
         </Text>
       </Heading>
 
-      <AccordionRoot multiple>
+      <AccordionRoot multiple w={{ base: "100%", lg: "70%" }}>
         {faqData.map((faq, index) => (
           <AccordionItem
             key={index}

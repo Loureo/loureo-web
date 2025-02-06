@@ -35,16 +35,23 @@ const Projects = () => {
 
   return (
     <VStack gap={30} py={24} px={4} maxW={"7xl"} mx={"auto"}>
-      <Heading
-        fontSize={"5xl"}
-        fontWeight={"thin"}
-        textTransform={"uppercase"}
-        mb={24}
-        fontFamily={"monospace"}
-        lineHeight={"1.2"}
-      >
-        What we do
-      </Heading>
+      <VStack gap={12} textAlign={"center"} mb={24}>
+        <Heading fontSize={"5xl"} fontWeight={400} lineHeight={"1.2"}>
+          Proyectos
+        </Heading>
+
+        <Text
+          fontSize={{ base: "lg", md: "xl" }}
+          color={"gray.600"}
+          maxW={"3xl"}
+        >
+          Cada proyecto en Loureo es un viaje único donde combinamos estrategia,
+          diseño y tecnología para llevar la innovación a su máxima expresión.
+          Próximamente, podrás conocer en detalle cómo hemos ayudado a negocios
+          de distintos tamaños y sectores a redefinir sus límites con soluciones
+          a la medida.
+        </Text>
+      </VStack>
 
       <VStack
         gap={{ base: 20, lg: 24 }}

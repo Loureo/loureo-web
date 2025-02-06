@@ -66,7 +66,7 @@ const Hero = ({
             }}
           >
             <Box
-              bgColor={"brand.500/80"}
+              bgColor={"brand.50"}
               py={1}
               px={3}
               rounded={{ base: "md", md: "full" }}
@@ -75,6 +75,7 @@ const Hero = ({
                 fontSize={{ base: "xs", md: "sm" }}
                 fontWeight={"bold"}
                 textWrap={"nowrap"}
+                color={"brand.500"}
               >
                 Hiring!
               </Text>
@@ -99,9 +100,9 @@ const Hero = ({
             fontWeight={300}
             lineHeight={1.2}
           >
-            Empowering SaaS entrepreneurs and tech businesses with premium,
-            conversion-focused websites—delivered at affordable, fixed monthly
-            rates. Launch in weeks, not months.
+            Fusionamos IA, diseño y estrategia para que tus proyectos alcancen
+            todo su potencial. Sin fricciones, sin complicaciones… solo
+            resultados reales que impulsan tu crecimiento.
           </Text>
 
           <Button
@@ -112,7 +113,7 @@ const Hero = ({
               scrollToRef.current?.scrollIntoView({ behavior: "smooth" });
             }}
           >
-            Go to services
+            Ver más
           </Button>
         </VStack>
       </Center>

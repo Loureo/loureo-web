@@ -5,56 +5,49 @@ const Manifesto = () => {
     {
       title: "Simplicity is the ultimate sophistication",
       description:
-        "Nuestro foco es que la tecnología sea fácil e intuitiva. Esto permite hacerla accesible a las personas e implementarse a cualquier nivel y tamaño de empresa. Nosotros nos despertamos cada mañana y trabajamos para que esto suceda y, así, poder tener productos limpios, usables y con la mínima fricción posible entre tecnología-persona.",
+        "Menos es más. Buscamos la innovación que se percibe sin saturar, haciendo que las herramientas tecnológicas fluyan con naturalidad.",
     },
     {
       title: "Mind, heart and guts",
       description:
-        "Análisis, humanidad e intuición. Primero escuchamos para identificar las necesidades de las personas. Luego, reflexionamos y analizamos las evidencias, priorizando este enfoque sobre la ejecución para obtener mejores resultados. También damos espacio a la intuición. Así, los usuarios se benefician de innovaciones que aportan valor y mejoran su calidad de vida en relación con la tecnología.",
+        "Mezclamos análisis, empatía e intuición para dar vida a soluciones que aportan valor real, centrándonos en las personas antes que en la técnica.",
     },
     {
       title: "Flexible like gravity",
       description:
-        "Como un campo gravitatorio: fuerte, firme y flexible, nos adaptamos a cada nuevo proyecto para funcionar como un equipo cohesionado. Conocemos las posibilidades y límites de cada proyecto, acompañando a nuestros usuarios en el día a día. Así, aumentamos nuestra capacidad de mejora entre hitos, permitiendo que el cliente integre nuestro I+D en su empresa de forma ágil y natural.",
+        "Somos fuertes y adaptables a la vez. Cada proyecto tiene su propia órbita, y nosotros ajustamos nuestro enfoque para integrarnos sin fricciones.",
     },
     {
       title: "Always focus on future and offbeat",
       description:
-        "Somos unos apasionados de la tecnología. Y eso es lo que nos hace estar siempre actualizados para usar las mejores tecnologías a favor de nuestros clientes. Lo que buscamos? Innovación constante e iteración continua bajo un perfeccionismo eficiente: con un lenguaje que permanece y tools externos e IA en evolución constante.",
+        "Nos impulsa la curiosidad. Apostamos por caminos poco convencionales, manteniéndonos siempre al día de las últimas tendencias y explorando nuevas posibilidades.",
     },
     {
       title: "Brand culture for better",
       description:
-        "Creemos que la cultura de marca no solo cambia a las empresas a través de crear un impacto en las personas, sino que esto se extrapola a la sociedad y el mundo. En Loureo nos esforzamos porque ese impacto sea positivo y que cada día estemos un poquito más cerca de ser el “best place to work”.",
+        "Creemos que nuestra cultura de marca impacta tanto en nuestro equipo como en la sociedad. Queremos ser un best place to work y un socio de confianza para ti.",
     },
     {
       title: "Connected by illusion and passion",
       description:
-        "Nos dedicamos a esto porque nos emociona y nos motiva para mejorar y crecer. Del mismo modo, queremos que nuestros clientes se ilusionen y vivan con pasión todo lo que nosotros, apoyándonos en la tecnología, podemos hacer por ellos. Si nos retroalimentamos, la experiencia del proyecto y su satisfacción aumentará hasta el infinito y más allá.",
+        "Lo que hacemos nos apasiona. Queremos que nuestros clientes se sumen a esta ilusión y vean cómo la tecnología puede transformar sus negocios (y su día a día).",
     },
     {
       title: "Making mistakes make us grow",
       description:
-        "Oh, we are humans! Y creemos profundamente que las personas aprenden y crecen a través del error. Y los proyectos avanzan y crecen también a partir de estos. Es la iteración constante la que nos lleva a corregir de forma ágil y avanzar con desviaciones mínimas. Y eso, sí que se nos da bien.",
+        "Experimentamos, medimos y mejoramos en un proceso iterativo constante. Equivocarnos rápido y aprender rápido forma parte de nuestro ADN.",
     },
     {
       title: "Tech is for and about people",
       description:
-        "Creemos que la tecnología debe estar a nuestro servicio, no al revés. Debe diseñarse en función de cómo opera la gente. Para lograrlo, es esencial entenderla, escuchar y dialogar con quienes trabajan en el sector y con sus usuarios. Crear comunidad en torno a la tecnología es fundamental para integrarla de manera natural en la sociedad.",
+        "Diseñamos pensando en los usuarios finales. La tecnología debe simplificar la vida, no complicarla. Por eso creemos en un diálogo constante con quienes la usan.",
     },
   ];
 
   return (
     <VStack gap={30} py={24} px={4} maxW={"7xl"} mx={"auto"}>
-      <Heading
-        fontSize={"5xl"}
-        fontWeight={"thin"}
-        textTransform={"uppercase"}
-        mb={24}
-        fontFamily={"monospace"}
-        lineHeight={"1.2"}
-      >
-        We are based on
+      <Heading fontSize={"5xl"} fontWeight={400} lineHeight={"1.2"} mb={24}>
+        Manifesto
       </Heading>
 
       <SimpleGrid

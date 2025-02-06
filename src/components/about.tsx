@@ -1,6 +1,7 @@
 import {
   Box,
   Center,
+  Flex,
   For,
   Heading,
   Image,
@@ -21,7 +22,7 @@ const About = () => {
             letterSpacing={"tight"}
             lineHeight={"1.2"}
           >
-            Everything you need, all in one place
+            Innovar es sencillo cuando se trabaja con pasión y experiencia
           </Heading>
 
           <Text
@@ -29,8 +30,11 @@ const About = () => {
             color={"gray.600"}
             maxW={"3xl"}
           >
-            We enable businesses to stay agile, iterate fast, and keep costs low
-            while delivering data-driven solutions that meet your needs.
+            Creemos que la mejor forma de abrazar el futuro es simplificarlo.
+            Por eso, combinamos nuestro dominio tecnológico con un enfoque
+            cercano y humano. Nuestro equipo traduce la complejidad en
+            soluciones claras y efectivas, pensadas para que, sin importar tu
+            nivel técnico, puedas sentir el poder de la innovación.
           </Text>
         </VStack>
 
@@ -39,56 +43,102 @@ const About = () => {
           <For
             each={[
               {
-                title: "Performance focused design",
-                description:
-                  "Make your product a priority with streamlined, focused UX designed to boost engagement and drive conversions.",
+                title: "Desarrollo de Producto Digital",
+                description: (
+                  <>
+                    Creamos{" "}
+                    <Text as={"span"} fontWeight={600} color={"gray.50"}>
+                      aplicaciones y plataformas a medida
+                    </Text>
+                    , escalables y centradas en la experiencia de usuario.
+                    Integramos tecnología de vanguardia para que tu producto sea
+                    tan potente como fácil de usar.
+                  </>
+                ),
                 illustration: (
-                  <Box>
-                    <Image src="./bento-graph.svg" />
-                  </Box>
+                  <Flex justify={"end"}>
+                    <Image
+                      src="./digital-product-comps.png"
+                      alt="Ascending curve"
+                      w={"full"}
+                    />
+                  </Flex>
                 ),
                 colSpan: 3,
               },
               {
-                title: "Changes with your product",
-                description:
-                  "A dynamic, budget-friendly solution that evolves with your product, keeping your site aligned with your goals and always up-to-date.",
+                title: "Integración de IA",
+                description: (
+                  <>
+                    Transformamos tus datos en oportunidades. Desde la
+                    automatización de procesos hasta la generación de insights
+                    predictivos. Te guiamos para{" "}
+                    <Text as={"span"} fontWeight={600} color={"gray.50"}>
+                      que la IA trabaje a tu favor
+                    </Text>
+                    , no al revés.
+                  </>
+                ),
                 illustration: (
                   <Center p={4} w={"full"}>
-                    <Image src="./timeline.png" maxH={"350px"} />
+                    <Image src="./cone.png" alt="Changes timeline" h={"full"} />
                   </Center>
                 ),
                 colSpan: 3,
               },
               {
-                title: "Free consultancy",
-                description:
-                  "Experience the benefits risk-free and only pay when you're 100% satisfied.",
+                title: "Optimización de Procesos",
+                description: (
+                  <>
+                    Analizamos de cerca tu modelo de negocio para{" "}
+                    <Text as={"span"} fontWeight={600} color={"gray.50"}>
+                      detectar ineficiencias
+                    </Text>
+                    . Diseñamos soluciones ágiles que ahorran tiempo, reducen
+                    costes y mejoran la comunicación entre equipos.
+                  </>
+                ),
+                illustration: <Image src="./bento-graph.svg" alt="Graph" />,
+                colSpan: 2,
+              },
+              {
+                title: "Integración Tecnológica",
+                description: (
+                  <>
+                    Integramos tus herramientas de forma fluida, cuidando cada
+                    detalle técnico. Queremos que sientas la{" "}
+                    <Text as={"span"} fontWeight={600} color={"gray.50"}>
+                      tecnología como un aliado
+                    </Text>
+                    , no como un reto.
+                  </>
+                ),
                 illustration: (
-                  <Box p={4}>
-                    <Image src="./timeline.png" />
-                  </Box>
+                  <Image
+                    src="./integrate.png"
+                    alt="Changes timeline"
+                    transform={"scale(2)"}
+                    opacity={0.2}
+                    maxH={"200px"}
+                  />
                 ),
                 colSpan: 2,
               },
               {
-                title: "Professional support",
-                description:
-                  "Help whenever you need it with our on-hand customer support specialists.",
-                illustration: (
-                  <Box p={4}>
-                    <Image src="./timeline.png" />
-                  </Box>
+                title: "Consultoría Tecnológica",
+                description: (
+                  <>
+                    El primer paso es saber{" "}
+                    <Text as={"span"} fontWeight={600} color={"gray.50"}>
+                      dónde estás y dónde quieres ir
+                    </Text>
+                    . Eliminamos complejidades y nos enfocamos en lo que
+                    realmente importa: tu éxito.
+                  </>
                 ),
-                colSpan: 2,
-              },
-              {
-                title: "On your terms",
-                description:
-                  "Cancel your subscription at any point, no strings attached.",
                 illustration: (
                   <Box p={4}>
-                    <Image src="./timeline.png" />
+                    <Image src="./chat.png" alt="Chat session" />
                   </Box>
                 ),
                 colSpan: 2,
@@ -105,8 +155,10 @@ const About = () => {
                 overflow={"hidden"}
                 gridColumn={{ base: 1, md: `span ${item.colSpan}` }}
                 justifyContent={"space-between"}
+                maxH={"600px"}
+                h={"full"}
               >
-                <VStack p={5} gap={4} align={"start"}>
+                <VStack p={5} gap={10} align={"start"} zIndex={1}>
                   <Heading fontSize={"xl"} fontWeight={600}>
                     {item.title}
                   </Heading>
@@ -116,7 +168,9 @@ const About = () => {
                   </Text>
                 </VStack>
 
-                <Box w={"full"}>{item.illustration}</Box>
+                <Flex w={"full"} h={"full"} zIndex={0}>
+                  {item.illustration}
+                </Flex>
               </VStack>
             )}
           </For>

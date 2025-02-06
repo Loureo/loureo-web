@@ -35,12 +35,12 @@ const Navbar = () => {
               navigator.clipboard.writeText("hello@loureo.com");
 
               toaster.create({
-                title: `Email copied to clipboard`,
+                title: `¡Email copiado al portapapeles!`,
                 type: "info",
               });
             }}
           >
-            Contact →
+            Contacto →
           </Button>
         </HStack>
       </Center>
