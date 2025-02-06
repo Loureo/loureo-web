@@ -7,14 +7,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
-import { useMemo } from "react";
-
 const Footer = () => {
-  const isMobile = useMemo(
-    () => window.matchMedia("(max-width: 600px)").matches,
-    []
-  );
-
   return (
     <Box
       w={"full"}
@@ -43,12 +36,6 @@ const Footer = () => {
         textOverflow={"ellipsis"}
       >
         WHAT HUMANS NEED: <br /> SIMPLE & NICE TECH
-        {/* {isMobile ? (
-          <span>
-          </span>
-        ) : (
-          "WHAT HUMANS NEED: SIMPLE & NICE TECH"
-        )} */}
       </Heading>
 
       <SimpleGrid
