@@ -28,7 +28,7 @@ const About = () => {
     once: true,
     margin: "-200px",
   });
-  const isCardsInView = useInView(cardsRef, { once: true, margin: "-500px" });
+  const isCardsInView = useInView(cardsRef, { once: true, margin: "-200px" });
 
   return (
     <Box py={24} px={4}>
