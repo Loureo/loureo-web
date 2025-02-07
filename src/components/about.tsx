@@ -13,8 +13,8 @@ import { motion, useInView } from "framer-motion";
 
 import { useRef } from "react";
 
-const MotionVStack = motion(VStack);
-const MotionHeading = motion(Heading);
+// const MotionHeading = motion(Heading);
+const MotionHeading = Heading;
 const MotionText = motion(Text);
 const MotionSimpleGrid = motion(SimpleGrid);
 
@@ -35,10 +35,10 @@ const About = () => {
       {/* Main heading */}
       <VStack gap={12} textAlign={"center"}>
         <MotionHeading
-          ref={titleRef}
-          initial={{ opacity: 0, y: 20 }}
-          animate={isTitleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
+          // ref={titleRef}
+          // initial={{ opacity: 0, y: 20 }}
+          // animate={isTitleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          // transition={{ duration: 0.6 }}
           fontSize={{ base: "4xl", md: "6xl" }}
           fontWeight={400}
           letterSpacing={"tight"}
