@@ -18,11 +18,7 @@ const MotionHeading = motion(Heading);
 const MotionText = motion(Text);
 const MotionButton = motion(Button);
 
-const Hero = ({
-  scrollToRef,
-}: {
-  scrollToRef: React.RefObject<HTMLDivElement>;
-}) => {
+const Hero = () => {
   return (
     <VStack
       pos={"relative"}
@@ -126,7 +122,11 @@ const Hero = ({
             colorPalette={"brand"}
             variant={"subtle"}
             onClick={() => {
-              scrollToRef.current?.scrollIntoView({ behavior: "smooth" });
+              // scroll to the section with id "about"
+              const aboutSection = document.getElementById("about");
+              if (aboutSection) {
+                aboutSection.scrollIntoView({ behavior: "smooth" });
+              }
             }}
           >
             Ver más

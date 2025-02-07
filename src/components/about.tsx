@@ -13,8 +13,7 @@ import { motion, useInView } from "framer-motion";
 
 import { useRef } from "react";
 
-// const MotionHeading = motion(Heading);
-const MotionHeading = Heading;
+const MotionHeading = motion(Heading);
 const MotionText = motion(Text);
 const MotionSimpleGrid = motion(SimpleGrid);
 
@@ -23,22 +22,24 @@ const About = () => {
   const subtitleRef = useRef(null);
   const cardsRef = useRef(null);
 
-  const isTitleInView = useInView(titleRef, { once: true, margin: "-200px" });
+  const isTitleInView = useInView(titleRef, { once: false, margin: "-50px" });
   const isSubtitleInView = useInView(subtitleRef, {
-    once: true,
-    margin: "-200px",
+    once: false,
+    margin: "-50px",
   });
-  const isCardsInView = useInView(cardsRef, { once: true, margin: "-200px" });
+  const isCardsInView = useInView(cardsRef, { once: false, margin: "-50px" });
 
   return (
-    <VStack gap={16} maxW={"7xl"} mx={"auto"} py={24} px={4}>
+    <VStack gap={16} maxW={"7xl"} mx={"auto"} py={24} px={4} id="about">
       {/* Main heading */}
       <VStack gap={12} textAlign={"center"}>
         <MotionHeading
-          // ref={titleRef}
-          // initial={{ opacity: 0, y: 20 }}
-          // animate={isTitleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          // transition={{ duration: 0.6 }}
+          ref={titleRef}
+          initial={{ opacity: 0, y: 20 }}
+          animate={
+            isTitleInView ? { opacity: 1, y: 0 } : { opacity: 0.1, y: 20 }
+          }
+          transition={{ duration: 0.6 }}
           fontSize={{ base: "4xl", md: "6xl" }}
           fontWeight={400}
           letterSpacing={"tight"}
@@ -51,7 +52,7 @@ const About = () => {
           ref={subtitleRef}
           initial={{ opacity: 0, y: 20 }}
           animate={
-            isSubtitleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+            isSubtitleInView ? { opacity: 1, y: 0 } : { opacity: 0.1, y: 20 }
           }
           transition={{ duration: 0.6 }}
           fontSize={{ base: "lg", md: "xl" }}
@@ -70,7 +71,7 @@ const About = () => {
       <MotionSimpleGrid
         ref={cardsRef}
         initial={{ opacity: 0, y: 20 }}
-        animate={isCardsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        animate={isCardsInView ? { opacity: 1, y: 0 } : { opacity: 0.1, y: 20 }}
         transition={{ duration: 0.6 }}
         columns={{ base: 1, md: 6 }}
         gap={8}

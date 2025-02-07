@@ -8,7 +8,7 @@ const MotionVStack = motion(VStack);
 
 const Manifesto = () => {
   const titleRef = useRef(null);
-  const isTitleInView = useInView(titleRef, { once: true, margin: "-300px" });
+  const isTitleInView = useInView(titleRef, { once: false, margin: "-300px" });
 
   // Create refs for each pair
   const pairRefs = useRef<(HTMLDivElement | null)[]>([]);

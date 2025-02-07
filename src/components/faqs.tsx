@@ -50,7 +50,7 @@ const faqData = [
 
 const FAQs = () => {
   const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  const isInView = useInView(containerRef, { once: false, margin: "-100px" });
 
   return (
     <MotionStack

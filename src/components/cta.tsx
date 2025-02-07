@@ -10,7 +10,7 @@ const MotionButton = motion(Button);
 
 const CTA = () => {
   const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+  const isInView = useInView(containerRef, { once: false, margin: "-100px" });
 
   return (
     <VStack gap={16} maxW={"4xl"} mx={"auto"} px={4} my={24}>
