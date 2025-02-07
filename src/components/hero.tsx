@@ -9,8 +9,8 @@ import {
 } from "@chakra-ui/react";
 
 import MovingGradientBackground from "@/components/moving-gradient-background";
-import { toaster } from "@/components/ui/toaster";
 import { motion } from "framer-motion";
+import { toaster } from "@/components/ui/toaster";
 
 const MotionCenter = motion(Center);
 const MotionStack = motion(Stack);
@@ -64,7 +64,7 @@ const Hero = ({
             p={1.5}
             bgColor={"whiteAlpha.300"}
             userSelect={"none"}
-            rounded={{ base: "md", md: "full" }}
+            rounded={"full"}
             shadow={"subtle"}
             _hover={{ bgColor: "whiteAlpha.300", shadow: "xs" }}
             onClick={() => {
@@ -77,12 +77,7 @@ const Hero = ({
               });
             }}
           >
-            <Box
-              bgColor={"brand.50"}
-              py={1}
-              px={3}
-              rounded={{ base: "md", md: "full" }}
-            >
+            <Box bgColor={"brand.50"} py={1} px={3} rounded={"full"}>
               <Text
                 fontSize={{ base: "xs", md: "sm" }}
                 fontWeight={"bold"}
