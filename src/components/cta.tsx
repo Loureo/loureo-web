@@ -48,7 +48,7 @@ const CTA = () => {
           colorPalette={"brand"}
           variant={"subtle"}
           onClick={() => {
-            window.open("mailto:hola@loureo.com", "_blank");
+            window.open("mailto:hello@loureo.com");
           }}
         >
           Contáctanos

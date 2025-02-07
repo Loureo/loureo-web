@@ -24,8 +24,8 @@ const Hero = () => {
       pos={"relative"}
       p={4}
       h={{ base: "unset", md: "100dvh" }}
-      minH={"100dvh"}
-      w={"100dvw"}
+      minH={"90dvh"}
+      w={"100%"}
       zIndex={1}
     >
       <MovingGradientBackground />
