@@ -35,7 +35,7 @@ const About = () => {
       {/* Main heading */}
       <VStack gap={12} textAlign={"center"}>
         <MotionHeading
-          // ref={titleRef}
+          ref={titleRef}
           initial={{ opacity: 0, y: 20 }}
           animate={isTitleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
@@ -48,7 +48,7 @@ const About = () => {
         </MotionHeading>
 
         <MotionText
-          // ref={subtitleRef}
+          ref={subtitleRef}
           initial={{ opacity: 0, y: 20 }}
           animate={
             isSubtitleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
@@ -68,7 +68,7 @@ const About = () => {
 
       {/* Features grid */}
       <MotionSimpleGrid
-        // ref={cardsRef}
+        ref={cardsRef}
         initial={{ opacity: 0, y: 20 }}
         animate={isCardsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.6 }}
