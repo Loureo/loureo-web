@@ -184,13 +184,8 @@ const About = () => {
           ]}
         >
           {(item, index) => (
-            <MotionVStack
+            <VStack
               key={`feature-${index}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={
-                isCardsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
-              }
-              transition={{ duration: 0.6, delay: index * 0.2 }}
               flex={1}
               bg={"whiteAlpha.50"}
               rounded={"2xl"}
@@ -214,7 +209,7 @@ const About = () => {
               <Flex w={"full"} h={"full"} zIndex={0}>
                 {item.illustration}
               </Flex>
-            </MotionVStack>
+            </VStack>
           )}
         </For>
       </MotionSimpleGrid>
