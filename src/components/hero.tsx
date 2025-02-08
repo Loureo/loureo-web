@@ -10,7 +10,6 @@ import {
 
 import MovingGradientBackground from "@/components/moving-gradient-background";
 import { motion } from "framer-motion";
-import { toaster } from "@/components/ui/toaster";
 
 const MotionCenter = motion(Center);
 const MotionStack = motion(Stack);
@@ -64,14 +63,10 @@ const Hero = () => {
             shadow={"subtle"}
             _hover={{ bgColor: "whiteAlpha.300", shadow: "xs" }}
             onClick={() => {
-              // Copy to clipboard the email address
-              navigator.clipboard.writeText("hello@loureo.com");
-
-              toaster.create({
-                title: `Email copied to clipboard`,
-                type: "info",
-                duration: 5000,
-              });
+              window.open(
+                "mailto:hello@loureo.com?subject=Me gustaría hablar con vosotros",
+                "_blank"
+              );
             }}
           >
             <Box bgColor={"brand.50"} py={1} px={3} rounded={"full"}>

@@ -3,7 +3,6 @@
 import { Box, Button, Center, HStack, Image } from "@chakra-ui/react";
 
 import { motion } from "framer-motion";
-import { toaster } from "./ui/toaster";
 
 const MotionBox = motion(Box);
 
@@ -38,13 +37,10 @@ const Navbar = () => {
           <Button
             colorPalette={"blacky"}
             onClick={() => {
-              navigator.clipboard.writeText("hello@loureo.com");
-
-              toaster.create({
-                title: `¡Email copiado al portapapeles!`,
-                type: "info",
-                duration: 5000,
-              });
+              window.open(
+                "mailto:hello@loureo.com?subject=Me gustaría hablar con vosotros",
+                "_blank"
+              );
             }}
           >
             Contacto →
