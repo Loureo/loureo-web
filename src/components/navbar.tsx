@@ -43,6 +43,7 @@ const Navbar = () => {
               toaster.create({
                 title: `¡Email copiado al portapapeles!`,
                 type: "info",
+                duration: 5000,
               });
             }}
           >

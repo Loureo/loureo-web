@@ -70,6 +70,7 @@ const Hero = () => {
               toaster.create({
                 title: `Email copied to clipboard`,
                 type: "info",
+                duration: 5000,
               });
             }}
           >
