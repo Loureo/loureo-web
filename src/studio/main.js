@@ -39,10 +39,15 @@ const $$ = (s) => [...document.querySelectorAll(s)];
 
 initI18n({ es: ES });
 
-// the opening card: once per visit (the class is set before first paint, in index.html)
+// the opening card (whether it plays, and how fast, is decided before first paint in index.html)
 if (html.classList.contains("is-intro")) {
-  try { sessionStorage.setItem("loureo.intro", "1"); } catch (_) { /* private mode */ }
-  setTimeout(() => html.classList.remove("is-intro"), 3500);
+  // start once the line's font is ready (never with a fallback face that then swaps), or after 1s at most
+  const wait = new Promise((r) => setTimeout(r, 1000));
+  Promise.race([document.fonts.ready, wait]).then(() => {
+    html.classList.add("is-intro-run");
+    const scale = html.classList.contains("is-intro-quick") ? 0.4 : 1;           // same timeline, 2 s instead of ~5 s
+    setTimeout(() => html.classList.remove("is-intro", "is-intro-run", "is-intro-quick"), 5200 * scale);   // after the last arrival ends
+  });
 }
 
 const lenis = reduced ? null : new Lenis({ lerp: 0.1, wheelMultiplier: 0.9 });

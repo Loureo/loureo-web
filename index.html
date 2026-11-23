@@ -14,8 +14,22 @@
   <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
   <link rel="manifest" href="/favicon/site.webmanifest" />
   <script>
-    // the opening card plays once per visit, before first paint (see .intro in studio.css)
-    try { if (!sessionStorage.getItem("loureo.intro") && !matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("is-intro"); } catch (_) {}
+    // The opening card, decided before first paint (see .intro in studio.css): the full version on the first visit of
+    // the day, a 2 s version on later loads that day. Never when arriving from another page of the site (it would
+    // cover the page transition) and never with reduced motion.
+    (function () {
+      try {
+        if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        var nav = performance.getEntriesByType("navigation")[0];
+        var internal = document.referrer && new URL(document.referrer).origin === location.origin && (!nav || nav.type !== "reload");
+        if (internal) return;
+        var d = new Date(), today = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+        var seen = localStorage.getItem("loureo.intro") === today;
+        localStorage.setItem("loureo.intro", today);
+        document.documentElement.classList.add("is-intro");
+        if (seen) document.documentElement.classList.add("is-intro-quick");
+      } catch (_) { /* storage blocked: no card */ }
+    })();
     // arriving from Almenara's page: its hero becomes the main tile again, if the tile is on screen (src/shared/carry.js)
     addEventListener("pagereveal", function (e) {
       var from = window.navigation && navigation.activation && navigation.activation.from;

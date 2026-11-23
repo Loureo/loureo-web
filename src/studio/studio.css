@@ -55,20 +55,29 @@ img, video { display: block; max-width: 100%; }
 .label { font: 500 0.75rem/1 var(--sans); letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); font-variant-numeric: tabular-nums; }
 
 /* ---------- the opening card ----------
-   Once per visit: one line on the studio's dark, then it lifts away and the page settles in. */
+   Full on the first visit of the day, 2 s on later loads (index.html decides), and nothing in it cuts: the line waits for its font, comes in slowly out of a soft blur, holds,
+   leaves on its own, and only then the dark dissolves while the page settles in underneath. Every step overlaps
+   the next. `.is-intro` (set before first paint) holds everything hidden; `.is-intro-run` (set once the font is
+   ready, src/studio/main.js) starts the timeline. */
 .intro { display: none; }
-.is-intro .intro {
-  display: grid; place-items: center; position: fixed; inset: 0; z-index: 80; background: var(--dark); color: var(--on-dark);
-  animation: intro-lift 0.9s var(--ease-io) 1.7s forwards;
+.is-intro { --t: 1; }                 /* time scale of the whole timeline */
+.is-intro-quick { --t: 0.4; }         /* later visits of the day: the same steps in 2 s */
+.is-intro .intro { display: grid; place-items: center; position: fixed; inset: 0; z-index: 80; background: var(--dark); color: var(--on-dark); }
+.intro__line { font: 400 clamp(1.25rem, 2.2vw, 1.75rem)/1.2 var(--sans); letter-spacing: -0.01em; opacity: 0; }
+.is-intro-run .intro__line {
+  animation: intro-line-in calc(1.4s * var(--t)) var(--ease) calc(0.1s * var(--t)) forwards,
+             intro-line-out calc(0.9s * var(--t)) var(--ease-io) calc(2.5s * var(--t)) forwards;
 }
-.intro__line { font: 400 clamp(1.25rem, 2.2vw, 1.75rem)/1.2 var(--sans); letter-spacing: -0.01em; opacity: 0; animation: intro-line 0.8s var(--ease) 0.2s forwards; }
-@keyframes intro-line { from { opacity: 0; translate: 0 0.4em; } to { opacity: 1; translate: none; } }
-@keyframes intro-lift { to { clip-path: inset(0 0 100% 0); visibility: hidden; } }
-/* the page waits under the card and arrives as it lifts */
-.is-intro .snav, .is-intro .lede, .is-intro .objects { opacity: 0; translate: 0 1.2rem; animation: settle 1s var(--ease) forwards; }
-.is-intro .snav { animation-delay: 2.15s; }
-.is-intro .lede { animation-delay: 2.25s; }
-.is-intro .objects { animation-delay: 2.4s; }
+.is-intro-run .intro { animation: intro-fade calc(1.3s * var(--t)) var(--ease-io) calc(3s * var(--t)) forwards; }
+@keyframes intro-line-in { from { opacity: 0; translate: 0 0.35em; filter: blur(8px); } to { opacity: 1; translate: none; filter: blur(0); } }
+@keyframes intro-line-out { from { opacity: 1; filter: blur(0); } to { opacity: 0; translate: 0 -0.25em; filter: blur(6px); } }
+@keyframes intro-fade { to { opacity: 0; visibility: hidden; } }
+/* the page waits under the card and arrives while the dark dissolves */
+.is-intro .snav, .is-intro .lede, .is-intro .objects { opacity: 0; translate: 0 1.2rem; }
+.is-intro-run .snav, .is-intro-run .lede, .is-intro-run .objects { animation: settle calc(1.4s * var(--t)) var(--ease) forwards; }
+.is-intro-run .snav { animation-delay: calc(3.3s * var(--t)); }
+.is-intro-run .lede { animation-delay: calc(3.45s * var(--t)); }
+.is-intro-run .objects { animation-delay: calc(3.65s * var(--t)); }
 @keyframes settle { to { opacity: 1; translate: none; } }
 
 /* ---------- nav ---------- */
