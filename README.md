@@ -22,3 +22,8 @@ The renders are made in the Almenara repo (`website/tools/render`, Blender Cycle
 Almenara's waitlist posts to `VITE_WAITLIST_ENDPOINT` (see `.env.example`); without it the form says it is not connected.
 Pages move with cross-document view transitions (the studio's Almenara card opens into the product's hero), with a fade
 for browsers that do not support them.
+
+## Licence
+
+© 2026 Loureo. All rights reserved. The source is public so the site can be built and reviewed; it is not licensed
+for reuse. That includes the code, the copy, the Almenara renders and the Loureo and Almenara names and marks.
