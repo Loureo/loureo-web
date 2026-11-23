@@ -16,7 +16,7 @@ The website of Loureo, an innovation lab: the lab's home at `/` and one page per
 | Path | What it is |
 | --- | --- |
 | `index.html`, `src/studio/` | The lab's home page (paper and ink; opening card, project loops, values, footer) |
-| `almenara/index.html`, `almenara/specs/index.html`, `src/almenara/` | Almenara's product page and specs (black stage, render sequences) |
+| `almenara/index.html`, `src/almenara/` | Almenara's product page (black stage, render sequences) |
 | `public/almenara/` | Almenara's assets: `seq/<shot>/{lg,sm}/####.webp` + `anchors.json`, `img/`, `video/` (catalogue loops) |
 | `src/shared/i18n.js` | Language engine shared by every page (EN in HTML, ES dictionaries per page, choice saved as `loureo.lang`) |
 | `vite.config.js` | One `rollupOptions.input` entry per page: add new pages there |

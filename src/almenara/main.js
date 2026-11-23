@@ -372,14 +372,6 @@ function jumpTo(hash) {
 }
 $$('a[href^="#"]').forEach((a) => a.addEventListener("click", (e) => { e.preventDefault(); jumpTo(a.getAttribute("href")); }));
 
-// leaving for the specs page: browsers without cross-document view transitions get a fade
-const supportsVT = "onpagereveal" in window;
-$$('a[href$="/specs/"]').forEach((a) => a.addEventListener("click", (e) => {
-  if (supportsVT || reduced) return;
-  e.preventDefault();
-  veil.classList.add("is-on");
-  setTimeout(() => { location.href = a.href; }, 400);
-}));
 addEventListener("pageshow", () => veil.classList.remove("is-on"));
 
 initWaitlist($(".waitlist"));

@@ -9,7 +9,6 @@ export default defineConfig({
       input: {
         studio: resolve(__dirname, "index.html"),
         almenara: resolve(__dirname, "almenara/index.html"),
-        almenaraSpecs: resolve(__dirname, "almenara/specs/index.html"),
       },
     },
   },

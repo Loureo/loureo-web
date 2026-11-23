@@ -19,7 +19,7 @@ const EXTRA = {
 
 const ES = {
   skip: "Saltar al contenido",
-  "nav.light": "Luz", "nav.design": "Diseño", "nav.how": "Cómo funciona", "nav.specs": "Especificaciones", "nav.cta": "Lista de espera",
+  "nav.light": "Luz", "nav.design": "Diseño", "nav.how": "Cómo funciona", "nav.cta": "Lista de espera",
   cta: "Apúntate a la lista",
   "hero.title": "Cuando tu agente te necesita, se enciende una luz.",
   "hero.alt": "Almenara sobre una mesa de nogal: un dispositivo de aluminio con pantalla de cristal, una rueda y una luz violeta en el borde frontal.",
@@ -65,25 +65,6 @@ const ES = {
   "foot.studio": "El laboratorio",
   "foot.made": "Almenara está diseñado por Loureo en Madrid, España.",
   "foot.photo": "Foto del paisaje: Kaya Arro en Unsplash.",
-  // specs page
-  "sp.title": "Especificaciones",
-  "sp.lede": "El dispositivo final tal y como está diseñado hoy. Modelado y rutado; aún no fabricado.",
-  "sp.back": "Volver",
-  "sp.size": "Tamaño", "sp.size.v": "102 × 78 × 11 mm (cuerpo) · peana redonda Ø66 mm, inclinada 8°",
-  "sp.display": "Pantalla", "sp.display.v": "2,8″ 640 × 480 bajo cristal con máscara negra (49 × 70,8 mm)",
-  "sp.controls": "Controles", "sp.controls.v": "Rueda de aluminio Ø39 mm sobre sensor magnético de ángulo, se pulsa para confirmar · 2 teclas sobre cúpulas metálicas · 2 botones laterales",
-  "sp.light": "Luz", "sp.light.v": "5 LED RGB de emisión lateral tras una guía de luz frontal",
-  "sp.sound": "Sonido", "sp.sound.v": "Altavoz de 15 × 11 mm, 1 W · 2 micrófonos",
-  "sp.brain": "Procesador", "sp.brain.v": "ESP32-P4 · radio ESP32-C6 de 2,4 GHz con antena tras una tapa de policarbonato con fibra",
-  "sp.power": "Energía", "sp.power.v": "Batería de 950 mAh · USB-C",
-  "sp.board": "Placa", "sp.board.v": "4 capas, 45,9 × 72,2 × 1,0 mm, 165 componentes",
-  "sp.materials": "Materiales", "sp.materials.v": "Cuerpo de aluminio, chasis interior de aluminio negro, cristal, tapa de policarbonato con fibra de vidrio, base de silicona",
-  "sp.software": "Software", "sp.software.v": "App para macOS en la barra de menús · Claude Code mediante su hook de permisos · Windows, Linux y otros agentes en la hoja de ruta",
-  "sp.colors": "Código de color", "sp.colors.v": "Verde sí · azul y violeta «sí, y…» · rojo no · ámbar esperando · violeta respirando mientras trabaja",
-  "sp.proto": "Prototipo actual", "sp.proto.v": "ESP32-S3 en protoboard con rueda, tecla, LED de color y zumbador. Probado de extremo a extremo con Claude Code.",
-  "sp.note": "Las cifras salen del modelo CAD y de la placa. Pueden cambiar antes de fabricar.",
-  "sp.drawing": "Render del modelo de ingeniería.",
-  "sp.pcb": "La placa rutada, cara superior.",
 };
 
 export const initI18n = () => init({ es: ES, extra: EXTRA });

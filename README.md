@@ -12,7 +12,7 @@ npm run build      # → dist/
 | Path | What it is |
 | --- | --- |
 | `index.html`, `src/studio/` | The lab's home page (paper and ink, serif statements, looping catalogue) |
-| `almenara/`, `src/almenara/` | Almenara's product page and specs (dark, scroll-driven render sequences) |
+| `almenara/`, `src/almenara/` | Almenara's product page (dark, scroll-driven render sequences) |
 | `public/almenara/` | Almenara's renders: `seq/<shot>/{lg,sm}/####.webp` (+ `anchors.json`) and `img/` |
 | `src/shared/i18n.js` | EN in the HTML, ES applied on top; each page passes its own Spanish strings. The choice is shared across pages |
 

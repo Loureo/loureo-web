@@ -49,7 +49,8 @@ that earn a place in your day."
 
 - **Say what it does for you, not what it is made of.** The model is Apple's "1,000 songs in your pocket" against a
   competitor's "5 GB of storage". "Answer without looking. One turn, one click." beats "Spun aluminium wheel with a
-  magnetic encoder". Specs belong on the specs page only.
+  magnetic encoder". No spec sheets before a product ships: figures change, and a page of them reads as a
+  promise. A tech specs page comes once the product is final.
 - **Few words.** Cut subtitles that repeat the title. If a line could be deleted without losing anything, delete it.
   No sentence "because it sounds nice".
 - **Concrete and specific.** Times, names, actions: "14:26 · It needs you. Before emailing it to Ana, it asks."

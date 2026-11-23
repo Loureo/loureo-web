@@ -23,7 +23,6 @@ const ES = {
   v5: "Prototipamos, medimos y volvemos a probar. Equivocarse rápido, aprender rápido.",
   v6: "Debe simplificarte la vida, no llenártela. La hacemos con quien la usa.",
   "foot.made": "Diseñado y hecho en Madrid, España.",
-  "foot.specs": "Especificaciones de Almenara",
   "foot.write": "Escríbenos",
   "foot.purpose.t": "Nuestro propósito",
   "foot.purpose.p": "La tecnología debería simplificar la vida, no llenarla. Probamos ideas nuevas hasta que lo consiguen y construimos las que se ganan un sitio en tu día.",

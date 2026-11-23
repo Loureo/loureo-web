@@ -13,12 +13,5 @@
         }
       ]
     }
-  ],
-  "redirects": [
-    {
-      "source": "/almenara/specs.html",
-      "destination": "/almenara/specs/",
-      "permanent": true
-    }
   ]
 }
