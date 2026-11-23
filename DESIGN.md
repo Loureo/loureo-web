@@ -90,8 +90,8 @@ Line icons drawn for each idea, never from an icon set:
 
 - Black stage; tokens in `src/almenara/styles/main.css` (`--bg #000`, `--ink #f5f5f7`, `--ink-2 #a1a1a6`,
   LED colours `--violet #a46bff`, `--red #ff5a50`, `--green #2fd07a`, `--blue #4d8dff`, `--amber #ffad2e`).
-- Every image of the device is a Blender Cycles render of the real CAD model (made in the Almenara repo,
-  `website/tools/render`). No stock photos, no AI images of the product.
+- Every image of the device is a Blender Cycles render of the real CAD model (made in `Loureo/almenara-hardware`,
+  `web-renders/tools/render`). No stock photos, no AI images of the product.
 - Scroll plays pre-rendered sequences on a canvas (`src/almenara/sequence.js`). Live elements are layered on top of a
   render rather than baked in: the device screen is HTML mapped onto the glass with a perspective matrix; the LED is
   its own light render, tinted and added (`lighter`) so colours change continuously.

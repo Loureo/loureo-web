@@ -68,7 +68,7 @@ function tintedLed() {
   return tintCv;
 }
 const light = createSequence($(".seq", lightEl), {
-  name: "light", frames: LIGHT_FRAMES, portraitWidth: 2.1, photo: { focusX: () => 0.6 },   // the device sits right of centre
+  name: "light", frames: LIGHT_FRAMES, blend: true, portraitWidth: 2.1, photo: { focusX: () => 0.6 },   // the device sits right of centre
   after: (ctx, r) => {
     const led = tintedLed();
     if (!led) return;
@@ -101,11 +101,6 @@ const progress = (el) => {
   const r = el.getBoundingClientRect();
   return clamp01(-r.top / Math.max(1, r.height - innerHeight));
 };
-const sectionY = (el, p) => el.getBoundingClientRect().top + scrollY + (el.offsetHeight - innerHeight) * p;
-const glide = (y, duration = 0.9, done) => {
-  if (lenis) lenis.scrollTo(y, { duration, onComplete: done });
-  else { scrollTo({ top: y, behavior: reduced ? "auto" : "smooth" }); done && setTimeout(done, 600); }
-};
 
 // ---------- the statement lights up word by word ----------
 const statement = $(".statement__text");
@@ -116,19 +111,22 @@ function splitWords() {
 
 // ---------- light: the wheel ----------
 // Scroll turns the wheel through its detents (0° No, 30° Yes and don't ask, 60° Yes), dwelling on each.
-// Dragging the wheel turns it directly; on release it snaps to a detent and the page scrolls to match, so
-// scroll stays the single source of truth.
+// A chip, the arrow keys or dragging the wheel take the section over without moving the page (moving it is what
+// made the scroll jump); as soon as the visitor scrolls again, scroll takes it back. The angle on screen always
+// eases toward its target, so the wheel never jumps either.
 const STATES = ["working", "no", "yesand", "yes"];
 const DETENT = ["no", "yesand", "yes"];
 const LED = { working: "violet", no: "red", yes: "green", yesand: "blue" };
 const WORK = 0.2, END = 0.92;                     // share of the section spent on "working", and where turning ends
 const stair = (x) => { x = Math.max(0, Math.min(2, x)); const k = Math.min(1, Math.floor(x)); return k + smooth((x - k - 0.35) / 0.3); };
 const angleAt = (pl) => (pl < WORK ? null : 30 * stair(clamp01((pl - WORK) / (END - WORK)) * 2.6 - 0.3));
-const detentP = (d) => WORK + ((d + 0.3 + (d === 2 ? 0.15 : 0)) / 2.6) * (END - WORK);
 const chips = $$(".chip");
 const caption = $(".light__caption");
 const knob = $(".knob");
 let lightState = "", drag = null;
+let manual = null;                  // { angle, working, y }: set by a chip, the keys or the wheel
+let shown = 0;                      // the wheel's angle on screen
+const TAKEOVER = 48;                // px of scroll that hand the section back to the page
 function setLight(state, force = false) {
   if (state === lightState && !force) return;
   lightState = state;
@@ -159,10 +157,17 @@ function placeScreen() {
   dscreen.classList.add("is-placed");
 }
 const goState = (state) => {
-  const p = state === "working" ? WORK * 0.5 : detentP(DETENT.indexOf(state));
-  glide(sectionY(lightEl, p));
+  const working = state === "working";
+  manual = { angle: working ? 0 : DETENT.indexOf(state) * 30, working, y: scrollY };
+  if (!working) lightEl.classList.add("has-turned");
 };
 chips.forEach((c) => c.addEventListener("click", () => goState(c.dataset.state)));
+function lightTarget() {
+  if (manual && !drag && Math.abs(scrollY - manual.y) > TAKEOVER) manual = null;   // the visitor scrolled: hand back
+  if (manual) return manual;
+  const a = angleAt(progress(lightEl));
+  return { angle: a ?? 0, working: a == null };
+}
 
 function knobGeom() {
   if (!knobAt) return null;
@@ -187,8 +192,8 @@ knob.addEventListener("pointerdown", (e) => {
   if (!kg) return;
   e.preventDefault();
   knob.setPointerCapture(e.pointerId);
-  const a0 = angleAt(progress(lightEl)) ?? 0;
-  drag = { raw: a0, angle: a0, last: pointerAngle(e), active: true };
+  drag = { raw: shown, angle: shown, last: pointerAngle(e), active: true };
+  manual = { angle: shown, working: false, y: scrollY };
   lightEl.classList.add("has-turned", "is-turning");
 });
 knob.addEventListener("pointermove", (e) => {
@@ -199,21 +204,14 @@ knob.addEventListener("pointermove", (e) => {
   drag.last = a;
   drag.raw += d;
   drag.angle = band(drag.raw);
+  manual.angle = drag.angle;
 });
 const release = () => {
   if (!drag?.active) return;
-  drag.active = false;
   lightEl.classList.remove("is-turning");
-  const d = Math.max(0, Math.min(2, Math.round(drag.angle / 30)));
-  const from = drag.angle, t0 = performance.now();
-  const settle = () => {                      // a short critically-damped ease into the detent
-    if (!drag || drag.active) return;
-    const k = Math.min(1, (performance.now() - t0) / 260);
-    drag.angle = from + (d * 30 - from) * (1 - Math.pow(1 - k, 3));
-    if (k < 1) requestAnimationFrame(settle);
-  };
-  settle();
-  glide(sectionY(lightEl, detentP(d)), 0.8, () => { if (drag && !drag.active) drag = null; });
+  // into the nearest detent: the eased angle in tick() does the settling
+  manual = { angle: Math.max(0, Math.min(2, Math.round(drag.angle / 30))) * 30, working: false, y: scrollY };
+  drag = null;
 };
 knob.addEventListener("pointerup", release);
 knob.addEventListener("pointercancel", release);
@@ -294,9 +292,14 @@ function tick() {
   // light: the wheel's angle comes from the drag when there is one, otherwise from scroll
   const lr = lightEl.getBoundingClientRect();
   if (lr.bottom > 0 && lr.top < innerHeight) {
-    const angle = drag ? drag.angle : angleAt(progress(lightEl));
-    setLight(angle == null ? "working" : DETENT[Math.max(0, Math.min(2, Math.round(angle / 30)))]);
-    light.setFrame(Math.max(0, Math.min(LIGHT_FRAMES - 1, Math.round(((angle ?? 0) - LIGHT_A0) / LIGHT_STEP))));
+    const target = lightTarget();
+    if (drag) shown = drag.angle;                                         // under the finger: 1:1
+    else {
+      const d = target.angle - shown;                                     // otherwise ease toward the target
+      shown = reduced || Math.abs(d) < 0.05 ? target.angle : shown + d * 0.16;
+    }
+    setLight(target.working ? "working" : DETENT[Math.max(0, Math.min(2, Math.round(shown / 30)))]);
+    light.setFrame(Math.max(0, Math.min(LIGHT_FRAMES - 1, (shown - LIGHT_A0) / LIGHT_STEP)));
     // the LED eases to its colour and breathes while the agent works, as the firmware does
     const to = LED_RGB[LED[lightState]];
     let moved = false;
@@ -371,7 +374,7 @@ $$('a[href^="#"]').forEach((a) => a.addEventListener("click", (e) => { e.prevent
 
 // leaving for the specs page: browsers without cross-document view transitions get a fade
 const supportsVT = "onpagereveal" in window;
-$$('a[href$="specs.html"]').forEach((a) => a.addEventListener("click", (e) => {
+$$('a[href$="/specs/"]').forEach((a) => a.addEventListener("click", (e) => {
   if (supportsVT || reduced) return;
   e.preventDefault();
   veil.classList.add("is-on");

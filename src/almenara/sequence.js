@@ -10,11 +10,13 @@
 
 const pad = (n) => String(n).padStart(4, "0");
 
-export function createSequence(canvas, { name, frames, portraitWidth = 1.6, offsetY = 0, top = 0, photo = null, after = null }) {
+export function createSequence(canvas, { name, frames, portraitWidth = 1.6, offsetY = 0, top = 0, photo = null, after = null, blend = false }) {
+  // blend: fractional frame indices draw the two neighbouring frames mixed, so a sequence with coarse steps (the
+  // wheel, 3° apart) turns continuously instead of ticking from frame to frame.
   const ctx = canvas.getContext("2d");
   const size = innerWidth <= 900 ? "sm" : "lg";
   let imgs, ready, order, gen = 0;
-  let current = -1, want = 0, prog = 0, dpr = 1, cw = 0, ch = 0;
+  let current = -1, want = 0, prog = 0, dpr = 1, cw = 0, ch = 0, lastKey = "";
   let fade = null;                     // { from, t0 } while cross-fading over a jump
   const geom = { dx: 0, dy: 0, dw: 1, dh: 1 };   // last drawn image rect, CSS px
 
@@ -26,6 +28,7 @@ export function createSequence(canvas, { name, frames, portraitWidth = 1.6, offs
     order = [0];
     for (const step of [8, 4, 2, 1]) for (let i = 0; i < frames; i += step) if (!order.includes(i)) order.push(i);
     current = -1;
+    lastKey = "";
   }
   reset(name);
 
@@ -67,6 +70,7 @@ export function createSequence(canvas, { name, frames, portraitWidth = 1.6, offs
     canvas.width = Math.round(cw * dpr);
     canvas.height = Math.round(ch * dpr);
     current = -1;
+    lastKey = "";
     draw(want, true);
   }
 
@@ -100,14 +104,19 @@ export function createSequence(canvas, { name, frames, portraitWidth = 1.6, offs
     return { dx, dy, dw: iw * s, dh: ih * s, portrait };
   }
 
-  function paint(img, alpha = 1) {
+  function drawImg(img, alpha = 1) {
     const r = rect(img);
-    const W = canvas.width, H = canvas.height;
     ctx.globalAlpha = alpha;
     ctx.drawImage(img, r.dx, r.dy, r.dw, r.dh);
     ctx.globalAlpha = 1;
+    return r;
+  }
+
+  // everything that sits on top of the picture, drawn exactly once per frame (after any fade or blend), so it never
+  // doubles up: the edges melting into black, then the layers from `after` (the LED's light)
+  function finish(r) {
+    const W = canvas.width, H = canvas.height;
     if (photo) {
-      // melt the photo's edges into the page's black wherever they show
       const band = (y0, y1, fromBlack) => {
         const g = ctx.createLinearGradient(0, y0, 0, y1);
         g.addColorStop(0, fromBlack ? "#000" : "rgba(0,0,0,0)");
@@ -120,25 +129,35 @@ export function createSequence(canvas, { name, frames, portraitWidth = 1.6, offs
       if (r.dy + r.dh < H - 1) band(r.dy + r.dh - e, r.dy + r.dh, false);
     }
     geom.dx = r.dx / dpr; geom.dy = r.dy / dpr; geom.dw = r.dw / dpr; geom.dh = r.dh / dpr;
-    if (after && alpha === 1) after(ctx, r);     // layers that live on top of the frame (the LED's light)
+    if (after) after(ctx, r);
   }
 
   function draw(i, force = false) {
     want = i;
-    const f = nearestReady(i);
-    if (f < 0 || (f === current && !force && !fade)) return;
-    // a jump of several frames (a new state, not a scrub) cross-fades instead of cutting
-    if (current >= 0 && Math.abs(f - current) > 3 && !force && imgs[current]) fade = { from: imgs[current], t0: performance.now() };
-    current = f;
+    const lo = Math.floor(i), hi = Math.min(frames - 1, lo + 1), frac = blend ? i - lo : 0;
+    const a = nearestReady(blend ? lo : Math.round(i));
+    if (a < 0) return;
+    const b = blend && frac > 0.01 && a === lo && ready[hi] ? hi : -1;
+    const key = `${a}|${b}|${b >= 0 ? frac.toFixed(2) : ""}`;
+    if (key === lastKey && !force && !fade) return;
+    // a jump of several frames (a new state, not a scrub) cross-fades instead of cutting; blended sequences never jump
+    if (!blend && current >= 0 && Math.abs(a - current) > 3 && !force && imgs[current]) fade = { from: imgs[current], t0: performance.now() };
+    current = a;
+    lastKey = key;
     ctx.fillStyle = "#000";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+    let r;
     if (fade) {
       const t = Math.min(1, (performance.now() - fade.t0) / 450);
-      paint(fade.from);
-      paint(imgs[f], t * t * (3 - 2 * t));
+      drawImg(fade.from);
+      r = drawImg(imgs[a], t * t * (3 - 2 * t));
       if (t < 1) requestAnimationFrame(() => draw(want, true));
       else fade = null;
-    } else paint(imgs[f]);
+    } else {
+      r = drawImg(imgs[a]);
+      if (b >= 0) drawImg(imgs[b], frac);
+    }
+    finish(r);
   }
 
   /** p ∈ [0, 1] → frame */
