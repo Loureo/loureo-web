@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Almenara · A light for when your agent needs you</title>
+  <meta name="description" content="Almenara is a small aluminium light for your desk. When an AI agent wants to do something that matters, it lights up and asks you first." />
+  <meta name="theme-color" content="#000000" />
+  <meta property="og:title" content="Almenara" />
+  <meta property="og:description" content="A light for when your agent needs you." />
+  <meta property="og:image" content="/almenara/img/og.jpg" />
+  <link rel="icon" href="/almenara/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" href="/almenara/seq/hero/lg/0000.webp" as="image" media="(min-width: 901px)" />
+  <link rel="preload" href="/almenara/seq/hero/sm/0000.webp" as="image" media="(max-width: 900px)" />
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+  <div class="veil" aria-hidden="true"></div>
+
+  <header class="nav" style="view-transition-name: site-nav">
+    <div class="nav__in">
+      <a class="nav__home" href="/" aria-label="Loureo"><svg viewBox="0 0 207 298" aria-hidden="true"><rect width="207" height="298" rx="103.5" /><path class="g" d="M30.49 194.516V103.35H62.3632L66.8018 148.933V194.516C66.8018 204.473 70.3214 213.058 77.3606 220.269C84.5715 227.479 93.2417 231.085 103.371 231.085C113.501 231.085 122.085 227.479 129.124 220.269C136.335 213.058 139.941 204.473 139.941 194.516V148.933L144.475 103.35H176.51V194.516C176.51 214.775 169.385 232.029 155.135 246.279C140.885 260.529 123.63 267.654 103.371 267.654C83.2838 267.654 66.1151 260.529 51.865 246.279C37.615 232.029 30.49 214.775 30.49 194.516Z" /><path class="g" d="M154.996 155.083C140.806 169.273 123.641 176.368 103.5 176.368C83.3593 176.368 66.1176 169.273 51.775 155.083C37.585 140.74 30.49 123.498 30.49 103.358C30.49 83.2169 37.585 66.0516 51.775 51.8616C66.1176 37.519 83.3593 30.3477 103.5 30.3477C123.641 30.3477 140.806 37.519 154.996 51.8616C169.339 66.0516 176.51 83.2169 176.51 103.358C176.51 123.498 169.339 140.74 154.996 155.083ZM74.891 131.967C82.8252 139.901 92.3615 143.868 103.5 143.868C114.638 143.868 124.175 139.901 132.109 131.967C140.043 124.032 144.01 114.496 144.01 103.358C144.01 92.0666 140.043 82.454 132.109 74.5198C124.175 66.5856 114.638 62.6185 103.5 62.6185C92.3615 62.6185 82.8252 66.5856 74.891 74.5198C66.9568 82.454 62.9897 92.0666 62.9897 103.358C62.9897 114.496 66.9568 124.032 74.891 131.967Z" /></svg></a><a class="nav__brand" href="/almenara/">Almenara</a>
+      <nav class="nav__links" aria-label="Sections">
+        <a href="#light" data-i18n="nav.light">Light</a>
+        <a href="#design" data-i18n="nav.design">Design</a>
+        <a href="#how" data-i18n="nav.how">How it works</a>
+        <a href="/almenara/specs.html" data-i18n="nav.specs">Specs</a>
+      </nav>
+      <div class="nav__end">
+        <button class="lang" type="button" aria-label="Cambiar a español" data-lang-toggle><span data-l="en">EN</span><span data-l="es">ES</span></button>
+        <a class="pill pill--sm" href="#waitlist" data-i18n="nav.cta">Join the waitlist</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- 1 · The device rises into view -->
+    <section class="hero" id="top">
+      <div class="hero__stick">
+        <canvas class="seq" aria-hidden="true"></canvas>
+        <div class="hero__black" aria-hidden="true"></div>
+        <div class="hero__copy">
+          <h1 class="hero__title" data-i18n="hero.title">When your agent needs you, a light comes on.</h1>
+          <a class="pill" href="#waitlist" data-i18n="cta">Join the waitlist</a>
+        </div>
+        <img class="sr" src="/almenara/seq/hero/lg/0119.webp" alt="Almenara on a walnut desk: an aluminium device with a glass screen, a wheel and a violet light along its front edge." data-i18n-alt="hero.alt" />
+      </div>
+    </section>
+
+    <!-- 2 · Statement -->
+    <section class="statement">
+      <p class="statement__text reveal-words" data-i18n="statement">Let your agents work for hours. Keep the decisions that matter.</p>
+    </section>
+
+    <!-- 3 · It speaks in light: the same device, full width; scroll or turn its wheel -->
+    <section class="light" id="light">
+      <div class="light__stick">
+        <canvas class="seq" aria-hidden="true"></canvas>
+        <div class="light__head">
+          <h2 data-i18n="light.title">It speaks in light.</h2>
+        </div>
+        <!-- the device's screen: live HTML mapped onto the rendered glass (main.js), not part of the render -->
+        <div class="dscreen" data-state="working" aria-hidden="true">
+          <div class="ds ds--work">
+            <div class="ds__head"><i class="ds__mark"></i><b>Claude</b><span>9:41</span></div>
+            <p class="ds__label" data-i18n="ds.working">Working</p>
+            <p class="ds__title" data-i18n="ds.workTitle">Writing this week's report</p>
+            <svg class="ds__ring" viewBox="0 0 320 320"><circle cx="160" cy="160" r="150" /><circle class="ds__arc" cx="160" cy="160" r="150" pathLength="100" /></svg>
+          </div>
+          <div class="ds ds--ask">
+            <div class="ds__head"><i class="ds__mark"></i><b>Claude</b><span>9:41</span></div>
+            <p class="ds__label ds__label--ask" data-i18n="ds.asks">Wants to send an email</p>
+            <p class="ds__title" data-i18n="ds.title">Send the weekly report to Ana</p>
+            <div class="ds__card"><p><span data-i18n="ds.to">To</span> ana@northwind.studio</p><p class="ds__file" data-i18n="ds.att">Weekly report.pdf</p></div>
+            <ol class="ds__opts">
+              <li style="--c: var(--green)" data-i18n="ds.o1">Yes</li>
+              <li style="--c: var(--blue)" data-i18n="ds.o2">Yes, and don't ask again</li>
+              <li style="--c: var(--red)" data-i18n="ds.o3">No</li>
+            </ol>
+            <p class="ds__hint" data-i18n="ds.hint">Turn to choose · Press to answer</p>
+          </div>
+        </div>
+        <div class="knob" role="slider" tabindex="0" aria-label="Wheel" data-i18n-aria="light.knob" aria-valuemin="0" aria-valuemax="2" aria-valuenow="0">
+          <span class="knob__hint glass glass--dark" data-i18n="light.hint">Turn the wheel</span>
+        </div>
+        <div class="light__foot">
+          <div class="chips glass" role="tablist" aria-label="Light">
+            <button role="tab" class="chip is-on" data-state="working" style="--c: var(--violet)"><i></i><span data-i18n="chip.working">Working</span></button>
+            <button role="tab" class="chip" data-state="no" style="--c: var(--red)"><i></i><span data-i18n="chip.no">No</span></button>
+            <button role="tab" class="chip" data-state="yesand" style="--c: var(--blue)"><i></i><span data-i18n="chip.yesand">Yes, and…</span></button>
+            <button role="tab" class="chip" data-state="yes" style="--c: var(--green)"><i></i><span data-i18n="chip.yes">Yes</span></button>
+          </div>
+          <p class="light__caption" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · Design details -->
+    <section class="design" id="design">
+      <div class="wrap">
+        <h2 class="design__title rise" data-i18n="design.title">Made to stay on your desk.</h2>
+        <div class="tiles">
+          <figure class="tile tile--tall rise">
+            <img src="/almenara/img/detail_knob.webp" alt="The aluminium wheel, with a fine circular finish." loading="lazy" data-i18n-alt="design.knob.alt" />
+            <figcaption><b data-i18n="design.knob.t">Answer without looking.</b> <span data-i18n="design.knob.p">One turn, one click.</span></figcaption>
+          </figure>
+          <figure class="tile tile--tall rise">
+            <img src="/almenara/img/detail_led.webp" alt="The light along the front edge, glowing amber." loading="lazy" data-i18n-alt="design.led.alt" />
+            <figcaption><b data-i18n="design.led.t">Seen from across the room.</b> <span data-i18n="design.led.p">No notification to miss.</span></figcaption>
+          </figure>
+          <figure class="tile tile--wide rise">
+            <img src="/almenara/img/detail_side.webp" alt="Almenara seen from the side, thin, on its round stand." loading="lazy" data-i18n-alt="design.side.alt" />
+            <figcaption><b data-i18n="design.side.t">Small enough to forget.</b> <span data-i18n="design.side.p">Until it needs you.</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · Inside -->
+    <section class="inside" id="inside" data-seq="explode" data-frames="90">
+      <div class="inside__stick">
+        <canvas class="seq" aria-hidden="true"></canvas>
+        <div class="inside__copy">
+          <h2 data-i18n="inside.title">Everything in its place.</h2>
+        </div>
+        <svg class="inside__lines" aria-hidden="true"><path /><path /><path /><circle r="4" /><circle r="4" /><circle r="4" /></svg>
+        <p class="inside__cap" data-at="0.18 0.45" data-anchor="top" data-i18n="inside.c1">Everything you touch, on top.</p>
+        <p class="inside__cap" data-at="0.45 0.72" data-anchor="board" data-i18n="inside.c2">A small computer that listens to your agent.</p>
+        <p class="inside__cap" data-at="0.72 1.01" data-anchor="battery" data-i18n="inside.c3">A battery, so it goes where you go.</p>
+      </div>
+    </section>
+
+    <!-- 6 · The almenaras -->
+    <section class="towers">
+      <div class="towers__media">
+        <img src="/almenara/img/ridges.webp" alt="Mountain ridges at dusk." loading="lazy" data-i18n-alt="towers.alt" />
+        <svg class="towers__fx" viewBox="0 0 2400 1600" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+      </div>
+      <div class="towers__copy wrap">
+        <h2 class="rise" data-i18n="towers.title">Towers used to talk with fire.</h2>
+        <p class="rise" data-i18n="towers.p1">A tower saw danger and lit a fire. The next one saw it and lit its own. The warning crossed the coast in minutes. These towers were called almenaras.</p>
+        <p class="rise" data-i18n="towers.p2">Almenara does the same for your work, wherever you are.</p>
+      </div>
+    </section>
+
+    <!-- 7 · How it works: one afternoon, told as the light passes from step to step -->
+    <section class="how" id="how">
+      <div class="wrap how__in">
+        <div class="how__head">
+          <h2 class="rise" data-i18n="how.title">How it works.</h2>
+          <div class="how__now rise" aria-hidden="true"><span class="how__clock">14:02</span><span class="how__bar"></span></div>
+        </div>
+        <ol class="how__line">
+          <li class="how__step" style="--c: var(--violet)">
+            <time>14:02</time>
+            <h3 data-i18n="how.t1">Your agent gets to work.</h3>
+            <p data-i18n="how.s1">You ask for the weekly report and go make lunch.</p>
+          </li>
+          <li class="how__step" style="--c: var(--amber)">
+            <time>14:26</time>
+            <h3 data-i18n="how.t2">It needs you.</h3>
+            <p data-i18n="how.s2">Before emailing it to Ana, it asks. The light changes.</p>
+          </li>
+          <li class="how__step" style="--c: var(--green)">
+            <time>14:27</time>
+            <h3 data-i18n="how.t3">You answer from the kitchen.</h3>
+            <p data-i18n="how.s3">Turn. Press. Done.</p>
+          </li>
+          <li class="how__step" style="--c: var(--violet)">
+            <time>14:27</time>
+            <h3 data-i18n="how.t4">It carries on.</h3>
+            <p data-i18n="how.s4">The email goes out. Back to violet.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 8 · Waitlist -->
+    <section class="close" id="waitlist">
+      <picture class="close__img"><img alt="" data-src="/almenara/img/night_{lang}.webp" loading="lazy" /></picture>
+      <div class="close__copy wrap">
+        <h2 class="rise" data-i18n="close.title">Be one of the first to see it light up.</h2>
+        <p class="rise" data-i18n="close.p">We'll write when there's something to show.</p>
+        <form class="waitlist rise" novalidate>
+          <label class="sr" for="email" data-i18n="close.label">Email address</label>
+          <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com" />
+          <button class="pill" type="submit" data-i18n="close.submit">Join</button>
+          <p class="waitlist__msg" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot__top">
+        <div class="foot__brand">
+          <a class="foot__name" href="/almenara/">Almenara</a>
+          <p data-i18n="foot.tag">A light for when your agent needs you.</p>
+          <a class="pill pill--sm" href="#waitlist" data-i18n="nav.cta">Join the waitlist</a>
+        </div>
+        <nav class="foot__cols" aria-label="Footer">
+          <div>
+            <h2 class="foot__h">Almenara</h2>
+            <a href="#light" data-i18n="nav.light">Light</a>
+            <a href="#design" data-i18n="nav.design">Design</a>
+            <a href="#how" data-i18n="nav.how">How it works</a>
+            <a href="/almenara/specs.html" data-i18n="nav.specs">Specs</a>
+          </div>
+          <div>
+            <h2 class="foot__h">Loureo</h2>
+            <a href="/" data-i18n="foot.studio">The studio</a>
+            <a href="mailto:hello@loureo.com">hello@loureo.com</a>
+          </div>
+        </nav>
+      </div>
+      <div class="foot__bottom">
+        <span data-i18n="foot.made">Almenara is designed by Loureo in Spain.</span>
+        <span class="foot__credit" data-i18n="foot.photo">Landscape photo: Kaya Arro on Unsplash.</span>
+        <span>© 2026 Loureo</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/almenara/main.js"></script>
+</body>
+</html>
