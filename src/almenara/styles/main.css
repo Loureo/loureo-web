@@ -27,8 +27,8 @@
 }
 
 @view-transition { navigation: auto; }
-::view-transition-old(root) { animation: vt-out 0.4s var(--ease-io) both; }
-::view-transition-new(root) { animation: vt-in 0.6s var(--ease) 0.08s both; }
+::view-transition-old(root) { animation: none; }   /* the new page fades in over the old one */
+::view-transition-new(root) { animation: vt-in 0.5s var(--ease-io) both; }
 @keyframes vt-out { to { opacity: 0; } }
 @keyframes vt-in { from { opacity: 0; } }
 
@@ -88,8 +88,10 @@ html[lang="en"] .lang [data-l="en"], html[lang="es"] .lang [data-l="es"] { color
 
 /* ---------- image sequences ---------- */
 .seq { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.hero .seq { view-transition-name: almenara-hero; }   /* the studio's product card opens into this */
+/* shared with the lab's project tile across the page change (named per navigation in src/shared/carry.js) */
 ::view-transition-group(almenara-hero) { animation-duration: 0.7s; animation-timing-function: var(--ease); }
+::view-transition-old(almenara-hero), ::view-transition-new(almenara-hero) { height: 100%; object-fit: cover; }
+.hero__poster img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 66% 50%; }
 
 /* ---------- hero ----------
    A photograph of the device on a desk (a rendered sequence). The copy sits in the dark left of the

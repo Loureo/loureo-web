@@ -159,5 +159,5 @@ export function createSequence(canvas, { name, frames, portraitWidth = 1.6, offs
 
   addEventListener("resize", resize);
   resize();
-  return { start, set, setFrame, resize, reload, redraw, toScreen, frame: () => (current < 0 ? want : current) };
+  return { start, set, setFrame, resize, reload, redraw, toScreen, drawn: () => current >= 0, frame: () => (current < 0 ? want : current) };
 }

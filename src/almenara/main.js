@@ -6,6 +6,7 @@ import { initI18n, onLang, getLang, t } from "./i18n.js";
 import { initWaitlist } from "./waitlist.js";
 import { createSequence } from "./sequence.js";
 import { createTowers } from "./towers.js";
+import { carry } from "../shared/carry.js";
 
 const html = document.documentElement;
 html.classList.remove("no-js");
@@ -81,6 +82,13 @@ const light = createSequence($(".seq", lightEl), {
 ledImg.onload = () => light.redraw();
 const inside = createSequence($(".seq", insideEl), { name: "explode", frames: 90, portraitWidth: 1.9, offsetY: 0.04, top: 0.15 });
 hero.start();
+// the hero and the lab's project tile are one image across the page change: the canvas once it has drawn,
+// the first-frame poster under it before that (on arrival, the canvas is still empty)
+const heroPoster = $(".hero__poster img");
+carry("almenara-hero",
+  () => (hero.drawn() ? $(".seq", heroEl) : heroPoster),
+  (p) => p === "/" || p === "/index.html",
+  () => hero.drawn() || (heroPoster.complete && heroPoster.naturalWidth > 0));
 const soon = (el, f) => new IntersectionObserver(([e], o) => { if (e.isIntersecting) { f(); o.disconnect(); } }, { rootMargin: "150% 0px" }).observe(el);
 soon(lightEl, () => light.start());
 soon(insideEl, () => inside.start());

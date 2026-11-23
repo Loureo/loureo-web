@@ -12,6 +12,18 @@
   <link rel="icon" href="/almenara/favicon.svg" type="image/svg+xml" />
   <link rel="preload" href="/almenara/seq/hero/lg/0000.webp" as="image" media="(min-width: 901px)" />
   <link rel="preload" href="/almenara/seq/hero/sm/0000.webp" as="image" media="(max-width: 900px)" />
+  <script>
+    // arriving from the lab's home page: its project tile becomes this hero, landing on the first-frame poster
+    // (the canvas has not drawn yet). Only if the poster has loaded. See src/shared/carry.js.
+    addEventListener("pagereveal", function (e) {
+      var from = window.navigation && navigation.activation && navigation.activation.from;
+      if (!e.viewTransition || !from || !/^\/(index\.html)?$/.test(new URL(from.url).pathname)) return;
+      var img = document.querySelector(".hero__poster img");
+      if (!img || !img.complete || !img.naturalWidth || scrollY > innerHeight * 0.5) return;
+      img.style.viewTransitionName = "almenara-hero";
+      e.viewTransition.finished.finally(function () { img.style.viewTransitionName = ""; });
+    });
+  </script>
 </head>
 <body>
   <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
@@ -37,6 +49,8 @@
     <!-- 1 · The device rises into view -->
     <section class="hero" id="top">
       <div class="hero__stick">
+        <!-- the first frame as a plain image under the canvas: what the page opens on, and what the page change carries -->
+        <picture class="hero__poster" aria-hidden="true"><source media="(max-width: 900px)" srcset="/almenara/seq/hero/sm/0000.webp" /><img src="/almenara/seq/hero/lg/0000.webp" alt="" fetchpriority="high" /></picture>
         <canvas class="seq" aria-hidden="true"></canvas>
         <div class="hero__black" aria-hidden="true"></div>
         <div class="hero__copy">
@@ -209,13 +223,13 @@
           </div>
           <div>
             <h2 class="foot__h">Loureo</h2>
-            <a href="/" data-i18n="foot.studio">The studio</a>
+            <a href="/" data-i18n="foot.studio">The lab</a>
             <a href="mailto:hello@loureo.com">hello@loureo.com</a>
           </div>
         </nav>
       </div>
       <div class="foot__bottom">
-        <span data-i18n="foot.made">Almenara is designed by Loureo in Spain.</span>
+        <span data-i18n="foot.made">Almenara is designed by Loureo in Madrid, Spain.</span>
         <span class="foot__credit" data-i18n="foot.photo">Landscape photo: Kaya Arro on Unsplash.</span>
         <span>© 2026 Loureo</span>
       </div>

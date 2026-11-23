@@ -62,8 +62,8 @@ const ES = {
   "close.label": "Email",
   "close.submit": "Apuntarme",
   "foot.tag": "Una luz para cuando tu agente te necesita.",
-  "foot.studio": "El estudio",
-  "foot.made": "Almenara está diseñado por Loureo en España.",
+  "foot.studio": "El laboratorio",
+  "foot.made": "Almenara está diseñado por Loureo en Madrid, España.",
   "foot.photo": "Foto del paisaje: Kaya Arro en Unsplash.",
   // specs page
   "sp.title": "Especificaciones",
