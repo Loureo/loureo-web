@@ -39,7 +39,7 @@
       </nav>
       <div class="nav__end">
         <button class="lang" type="button" aria-label="Cambiar a español" data-lang-toggle><span data-l="en">EN</span><span data-l="es">ES</span></button>
-        <a class="pill pill--sm" href="#waitlist" data-i18n="nav.cta">Join the waitlist</a>
+        <a class="pill pill--sm" href="#waitlist" data-waitlist data-i18n="nav.cta">Join the waitlist</a>
       </div>
     </div>
   </header>
@@ -54,7 +54,7 @@
         <div class="hero__black" aria-hidden="true"></div>
         <div class="hero__copy">
           <h1 class="hero__title" data-i18n="hero.title">When your agent needs you, a light comes on.</h1>
-          <a class="pill" href="#waitlist" data-i18n="cta">Join the waitlist</a>
+          <a class="pill" href="#waitlist" data-waitlist data-i18n="cta">Join the waitlist</a>
         </div>
         <img class="sr" src="/almenara/seq/hero/lg/0119.webp" alt="Almenara on a walnut desk: an aluminium device with a glass screen, a wheel and a violet light along its front edge." data-i18n-alt="hero.alt" />
       </div>
@@ -194,14 +194,7 @@
       <div class="close__copy wrap">
         <h2 class="rise" data-i18n="close.title">Be one of the first to see it light up.</h2>
         <p class="rise" data-i18n="close.p">We'll write when there's something to show.</p>
-        <form class="waitlist rise" novalidate>
-          <label class="sr" for="email" data-i18n="close.label">Email address</label>
-          <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com" />
-          <button class="pill" type="submit" data-i18n="close.submit">Join</button>
-          <input class="waitlist__trap" name="company" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" />
-          <p class="waitlist__msg" role="status" aria-live="polite"></p>
-          <p class="waitlist__note"><span data-i18n="close.note">Loureo SL will use your email only to write to you about Almenara. Unsubscribe whenever you like.</span> <a href="/legal/#privacy" data-i18n="close.privacy">Privacy</a></p>
-        </form>
+        <button class="pill close__cta rise" type="button" data-waitlist data-i18n="cta">Join the waitlist</button>
       </div>
     </section>
   </main>
@@ -212,7 +205,7 @@
         <div class="foot__brand">
           <a class="foot__name" href="/almenara/">Almenara</a>
           <p data-i18n="foot.tag">A light for when your agent needs you.</p>
-          <a class="pill pill--sm" href="#waitlist" data-i18n="nav.cta">Join the waitlist</a>
+          <a class="pill pill--sm" href="#waitlist" data-waitlist data-i18n="nav.cta">Join the waitlist</a>
         </div>
         <nav class="foot__cols" aria-label="Footer">
           <div>
@@ -236,6 +229,46 @@
       </div>
     </div>
   </footer>
+
+
+  <!-- The waitlist: a quiet sheet with the device above and the email below. On success the light turns green, a
+       tick draws itself and the device settles towards the centre (src/almenara/waitlist.js, .wl in main.css). -->
+  <dialog class="wl" aria-labelledby="wl-title">
+    <div class="wl__sheet">
+      <button class="wl__x" type="button" aria-label="Close" data-i18n-aria="close" data-wl-close>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11" /></svg>
+      </button>
+      <div class="wl__stage" aria-hidden="true">
+        <div class="wl__glow"></div>
+        <div class="wl__device">
+          <img class="wl__img" src="/almenara/img/waitlist/violet.webp" alt="" width="1200" height="760" decoding="async" />
+          <img class="wl__img wl__img--yes" src="/almenara/img/waitlist/green.webp" alt="" width="1200" height="760" decoding="async" />
+        </div>
+      </div>
+      <div class="wl__body">
+        <div class="wl__ask">
+          <h2 class="wl__title" id="wl-title" data-i18n="wl.title">Be one of the first to see it light up.</h2>
+          <form class="wl__form" novalidate>
+            <label class="sr" for="wl-email" data-i18n="close.label">Email address</label>
+            <div class="wl__field">
+              <input id="wl-email" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="Your email" data-i18n-ph="wl.ph" />
+              <button class="wl__go" type="submit" aria-label="Join" data-i18n-aria="join">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6.5l5.5 5.5-5.5 5.5" /></svg>
+              </button>
+            </div>
+            <input class="waitlist__trap" name="company" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <p class="wl__msg" role="status" aria-live="polite"></p>
+            <p class="wl__note"><span data-i18n="close.note">Loureo SL will use your email only to write to you about Almenara. Unsubscribe whenever you like.</span> <a href="/legal/#privacy" data-i18n="close.privacy">Privacy</a></p>
+          </form>
+        </div>
+        <div class="wl__done" aria-live="polite">
+          <svg class="wl__tick" viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26" pathLength="1" /><path d="M18.5 28.6l6.4 6.3 12.6-13.4" pathLength="1" /></svg>
+          <h2 class="wl__title" tabindex="-1" data-i18n="wl.done">You are on the list.</h2>
+          <p class="wl__sub" data-i18n="wl.done.p">You will be among the first to hear.</p>
+        </div>
+      </div>
+    </div>
+  </dialog>
 
   <script type="module" src="/src/almenara/main.js"></script>
 </body>

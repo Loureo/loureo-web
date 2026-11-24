@@ -370,10 +370,12 @@ function jumpTo(hash) {
     requestAnimationFrame(() => requestAnimationFrame(() => veil.classList.remove("is-on")));
   }, 420);
 }
-$$('a[href^="#"]').forEach((a) => a.addEventListener("click", (e) => { e.preventDefault(); jumpTo(a.getAttribute("href")); }));
+$$('a[href^="#"]:not([data-waitlist])').forEach((a) => a.addEventListener("click", (e) => { e.preventDefault(); jumpTo(a.getAttribute("href")); }));
 
 addEventListener("pageshow", () => veil.classList.remove("is-on"));
 
-initWaitlist($(".waitlist"));
+// the waitlist is a sheet over the page; the page holds still behind it
+const waitlist = initWaitlist($(".wl"), { onOpen: () => lenis?.stop(), onClose: () => lenis?.start() });
 
-if (location.hash) requestAnimationFrame(() => jumpTo(location.hash));
+if (location.hash === "#waitlist") requestAnimationFrame(() => waitlist.open());
+else if (location.hash) requestAnimationFrame(() => jumpTo(location.hash));
