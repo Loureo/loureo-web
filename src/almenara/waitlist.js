@@ -1,5 +1,6 @@
-// Waitlist form. It posts JSON to VITE_WAITLIST_ENDPOINT (Formspree, Buttondown, Loops, your own API…).
-// Without an endpoint it says so: it never pretends an email was saved.
+// Waitlist form. It posts {email, lang, company} as JSON to /api/waitlist (api/waitlist.js → Brevo), or to
+// VITE_WAITLIST_ENDPOINT if set. `company` is a hidden field only bots fill in.
+// When the server is not configured (503) it says so: it never pretends an email was saved.
 import { getLang } from "./i18n.js";
 
 const T = {
@@ -26,16 +27,17 @@ export function initWaitlist(form, onSuccess) {
       input.focus();
       return;
     }
-    const endpoint = import.meta.env.VITE_WAITLIST_ENDPOINT;
-    if (!endpoint) { say("off", "err"); return; }
+    const endpoint = import.meta.env.VITE_WAITLIST_ENDPOINT || "/api/waitlist";
     btn.disabled = true;
     say("sending");
     try {
       const r = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ email, lang: getLang() }),
+        body: JSON.stringify({ email, lang: getLang(), company: form.querySelector("[name=company]")?.value || "" }),
       });
+      if (r.status === 503) { say("off", "err"); return; }
+      if (r.status === 400) { input.setAttribute("aria-invalid", "true"); say("invalid", "err"); return; }
       if (!r.ok) throw new Error(String(r.status));
       say("ok", "ok");
       form.reset();

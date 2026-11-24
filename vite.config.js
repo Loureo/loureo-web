@@ -9,6 +9,7 @@ export default defineConfig({
       input: {
         studio: resolve(__dirname, "index.html"),
         almenara: resolve(__dirname, "almenara/index.html"),
+        legal: resolve(__dirname, "legal/index.html"),
       },
     },
   },

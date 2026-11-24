@@ -18,6 +18,8 @@ The website of Loureo, an innovation lab: the lab's home at `/` and one page per
 | `index.html`, `src/studio/` | The lab's home page (paper and ink; opening card, project loops, values, footer) |
 | `almenara/index.html`, `src/almenara/` | Almenara's product page (black stage, render sequences) |
 | `public/almenara/` | Almenara's assets: `seq/<shot>/{lg,sm}/####.webp` + `anchors.json`, `img/`, `video/` (catalogue loops) |
+| `legal/index.html`, `src/legal/` | Legal notice and privacy policy |
+| `api/waitlist.js` | Vercel function: waitlist sign-ups → Brevo |
 | `src/shared/i18n.js` | Language engine shared by every page (EN in HTML, ES dictionaries per page, choice saved as `loureo.lang`) |
 | `vite.config.js` | One `rollupOptions.input` entry per page: add new pages there |
 
@@ -46,4 +48,8 @@ The catalogue loops are cut from `tools/render/out/hero` and `out/explode` frame
   Terraform Cloud org "Loureo", workspace `loureo-infra`, Route 53 + ACM). The old GitLab remotes (`origin`) are legacy.
 - Deploy: Vercel (Hobby), production from `main`; `vercel.json` sets the Vite build. DNS in Route 53: apex A
   `76.76.21.21`, `www` CNAME `cname.vercel-dns.com`.
-- Almenara's waitlist needs `VITE_WAITLIST_ENDPOINT` (see `.env.example`); without it the form says it is not connected.
+- Almenara's waitlist: the form posts to `api/waitlist.js` (Vercel function), which adds the email to Brevo list 3
+  "Almenara waitlist" with `LANG`, single opt-in. Needs `BREVO_API_KEY` in Vercel (see `.env.example`); without it the
+  form says it is not connected. Brevo's "authorized IPs" must stay off, Vercel's IPs change.
+- `/legal/` is the legal notice (LSSI) and privacy policy, both languages written out in the HTML. Update it, and its
+  date, whenever we collect new data, add a processor or add cookies/analytics.

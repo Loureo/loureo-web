@@ -198,7 +198,9 @@
           <label class="sr" for="email" data-i18n="close.label">Email address</label>
           <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com" />
           <button class="pill" type="submit" data-i18n="close.submit">Join</button>
+          <input class="waitlist__trap" name="company" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <p class="waitlist__msg" role="status" aria-live="polite"></p>
+          <p class="waitlist__note"><span data-i18n="close.note">Loureo SL will use your email only to write to you about Almenara. Unsubscribe whenever you like.</span> <a href="/legal/#privacy" data-i18n="close.privacy">Privacy</a></p>
         </form>
       </div>
     </section>
@@ -223,6 +225,7 @@
             <h2 class="foot__h">Loureo</h2>
             <a href="/" data-i18n="foot.studio">The lab</a>
             <a href="mailto:hello@loureo.com">hello@loureo.com</a>
+            <a href="/legal/" data-i18n="foot.legal">Legal and privacy</a>
           </div>
         </nav>
       </div>

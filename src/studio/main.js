@@ -28,6 +28,7 @@ const ES = {
   "foot.purpose.p": "La tecnología debería simplificar la vida, no llenarla. Probamos ideas nuevas hasta que lo consiguen y construimos las que se ganan un sitio en tu día.",
   "foot.contact.t": "Contacto",
   "foot.general": "Consultas generales",
+  "foot.legal": "Aviso legal y privacidad",
 };
 
 const html = document.documentElement;

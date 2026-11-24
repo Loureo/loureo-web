@@ -336,6 +336,10 @@ html[lang="en"] .lang [data-l="en"], html[lang="es"] .lang [data-l="es"] { color
 .waitlist__msg { flex-basis: 100%; min-height: 1.5em; color: var(--ink-2); font-size: 0.9375rem; }
 .waitlist__msg[data-tone="ok"] { color: var(--green); }
 .waitlist__msg[data-tone="err"] { color: var(--red); }
+.waitlist__trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.waitlist__note { flex-basis: 100%; margin-top: 0.4rem; color: var(--ink-3); font-size: 0.8125rem; line-height: 1.5; text-wrap: pretty; }
+.waitlist__note a { color: var(--ink-2); text-decoration: underline; text-underline-offset: 0.2em; }
+.waitlist__note a:hover { color: var(--ink); }
 
 /* ---------- footer ---------- */
 .foot { border-top: 1px solid var(--line); padding: 5rem 0 2rem; color: var(--ink-2); font-size: 0.9375rem; }
