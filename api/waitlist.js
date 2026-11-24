@@ -1,5 +1,7 @@
 // POST /api/waitlist · adds an email to Almenara's waitlist in Brevo (a Vercel function; the API key never reaches
 // the browser). Single opt-in: the contact goes straight onto the list, with the page's language in LANG.
+// LANG is a text attribute created in Brevo (Contacts → Settings → Contact attributes): Brevo silently drops
+// attributes it does not know. The welcome automation branches on it (LANG = es → Spanish, else English).
 //
 // Env (Vercel → Project → Settings → Environment Variables):
 //   BREVO_API_KEY   required. Brevo → Settings → SMTP & API → API keys.
@@ -36,12 +38,7 @@ export async function POST(request) {
   };
 
   try {
-    let r = await brevo("/contacts", contact);
-    // first sign-up on a fresh account: the LANG attribute does not exist yet. Create it once and try again.
-    if (r.status === 400 && /attribute/i.test(await r.clone().text())) {
-      await brevo("/contacts/attributes/normal/LANG", { type: "text" });
-      r = await brevo("/contacts", contact);
-    }
+    const r = await brevo("/contacts", contact);
     if (r.ok) return json(200, { ok: true });
     console.error("brevo", r.status, await r.text());
     return json(502, { error: "upstream" });
